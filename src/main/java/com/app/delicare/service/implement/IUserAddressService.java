@@ -1,7 +1,7 @@
 package com.app.delicare.service.implement;
 
-import com.app.delicare.dtos.UserAddressDTO;
-import com.app.delicare.responses.UserAddressResponse;
+import com.app.delicare.dtos.user.UserAddressDTO;
+import com.app.delicare.responses.user.UserAddressResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 

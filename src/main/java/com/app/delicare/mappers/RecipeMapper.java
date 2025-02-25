@@ -1,9 +1,9 @@
 package com.app.delicare.mappers;
 
-import com.app.delicare.dtos.RecipeDTO;
-import com.app.delicare.entitys.Recipe;
+import com.app.delicare.dtos.recipe.RecipeDTO;
+import com.app.delicare.entitys.recipe.Recipe;
 import com.app.delicare.mappers.base.BaseMapper;
-import com.app.delicare.responses.RecipeResponse;
+import com.app.delicare.responses.recipe.RecipeResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

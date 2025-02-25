@@ -1,12 +1,11 @@
 package com.app.delicare.service;
 
-import com.app.delicare.component.CommonUtils;
-import com.app.delicare.dtos.UserDTO;
-import com.app.delicare.entitys.*;
-import com.app.delicare.dtos.UserHistoryDTO;
+import com.app.delicare.dtos.user.UserHistoryDTO;
+import com.app.delicare.entitys.user.User;
+import com.app.delicare.entitys.user.UserHistory;
 import com.app.delicare.mappers.UserHistoryMapper;
-import com.app.delicare.repositories.*;
-import com.app.delicare.responses.UserHistoryResponse;
+import com.app.delicare.repositories.user.UserHistoryRepository;
+import com.app.delicare.responses.user.UserHistoryResponse;
 import com.app.delicare.service.implement.IUserHistoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

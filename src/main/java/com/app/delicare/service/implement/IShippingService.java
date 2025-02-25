@@ -1,7 +1,7 @@
 package com.app.delicare.service.implement;
 
-import com.app.delicare.dtos.ShippingDTO;
-import com.app.delicare.responses.ShippingResponse;
+import com.app.delicare.dtos.category.ShippingDTO;
+import com.app.delicare.responses.category.ShippingResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 

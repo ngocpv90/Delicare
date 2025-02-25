@@ -1,13 +1,21 @@
 package com.app.delicare.mappers;
 
 import com.app.delicare.component.CommonUtils;
-import com.app.delicare.dtos.OrderDTO;
-import com.app.delicare.entitys.*;
+import com.app.delicare.dtos.order.OrderDTO;
+import com.app.delicare.entitys.category.Category;
+import com.app.delicare.entitys.category.Payment;
+import com.app.delicare.entitys.category.Shipping;
+import com.app.delicare.entitys.category.Stage;
+import com.app.delicare.entitys.order.Order;
+import com.app.delicare.entitys.user.UserAddress;
 import com.app.delicare.mappers.base.BaseMapper;
-import com.app.delicare.repositories.*;
-import com.app.delicare.responses.MenuResponse;
-import com.app.delicare.responses.OrderResponse;
-import com.app.delicare.responses.UserAddressResponse;
+import com.app.delicare.repositories.category.CategoryRepository;
+import com.app.delicare.repositories.category.PaymentRepository;
+import com.app.delicare.repositories.category.ShippingRepository;
+import com.app.delicare.repositories.category.StageRepository;
+import com.app.delicare.repositories.user.UserAddressRepository;
+import com.app.delicare.repositories.user.UserRepository;
+import com.app.delicare.responses.order.OrderResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -30,8 +38,6 @@ public class OrderMapper extends BaseMapper {
 
     public Order mapEntityToModel(OrderDTO orderDTO){
         Order order = Order.builder()
-                .orderCode(orderDTO.getOrderCode())
-                .orderName(orderDTO.getOrderName())
                 .amountTotal(orderDTO.getAmountTotal())
                 .build();
         if(!CommonUtils.isNullOrEmpty(orderDTO.getPaymentId())){
@@ -65,8 +71,6 @@ public class OrderMapper extends BaseMapper {
     public OrderResponse mapResponseToEntity(Order order){
         OrderResponse orderResponse = OrderResponse.builder()
                 .id(order.getId())
-                .orderCode(order.getOrderCode())
-                .orderName(order.getOrderName())
                 .amountTotal(order.getAmountTotal())
                 .build();
         Optional.ofNullable(order)

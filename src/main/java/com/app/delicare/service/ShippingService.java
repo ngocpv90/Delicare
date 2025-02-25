@@ -1,15 +1,13 @@
 package com.app.delicare.service;
 
-import com.app.delicare.dtos.ShippingDTO;
-import com.app.delicare.entitys.Recipe;
-import com.app.delicare.entitys.Shipping;
-import com.app.delicare.entitys.User;
+import com.app.delicare.dtos.category.ShippingDTO;
+import com.app.delicare.entitys.category.Shipping;
+import com.app.delicare.entitys.user.User;
 import com.app.delicare.mappers.ShippingMapper;
-import com.app.delicare.repositories.ShippingRepository;
-import com.app.delicare.repositories.UserRepository;
-import com.app.delicare.responses.ShippingResponse;
+import com.app.delicare.repositories.category.ShippingRepository;
+import com.app.delicare.repositories.user.UserRepository;
+import com.app.delicare.responses.category.ShippingResponse;
 import com.app.delicare.service.implement.IShippingService;
-import com.app.delicare.specification.RecipeSpecification;
 import com.app.delicare.specification.ShippingSpecification;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

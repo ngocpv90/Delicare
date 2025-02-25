@@ -1,7 +1,7 @@
 package com.app.delicare.service.implement;
 
-import com.app.delicare.dtos.ProductImgDTO;
-import com.app.delicare.responses.ProductImgResponse;
+import com.app.delicare.dtos.product.ProductImgDTO;
+import com.app.delicare.responses.product.ProductImgResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 

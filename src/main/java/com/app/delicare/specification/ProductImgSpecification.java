@@ -2,8 +2,7 @@ package com.app.delicare.specification;
 
 import com.app.delicare.common.enums.ECommon;
 import com.app.delicare.common.enums.ESpecification;
-import com.app.delicare.entitys.Product;
-import com.app.delicare.entitys.ProductImg;
+import com.app.delicare.entitys.product.ProductImg;
 import com.app.delicare.specification.base.BaseSpecification;
 import org.springframework.data.jpa.domain.Specification;
 

@@ -1,12 +1,12 @@
 package com.app.delicare.service;
 
-import com.app.delicare.dtos.RecipeDTO;
-import com.app.delicare.entitys.Recipe;
-import com.app.delicare.entitys.User;
+import com.app.delicare.dtos.recipe.RecipeDTO;
+import com.app.delicare.entitys.recipe.Recipe;
+import com.app.delicare.entitys.user.User;
 import com.app.delicare.mappers.RecipeMapper;
-import com.app.delicare.repositories.RecipeRepository;
-import com.app.delicare.repositories.UserRepository;
-import com.app.delicare.responses.RecipeResponse;
+import com.app.delicare.repositories.ingredient.RecipeRepository;
+import com.app.delicare.repositories.user.UserRepository;
+import com.app.delicare.responses.recipe.RecipeResponse;
 import com.app.delicare.service.implement.IRecipeService;
 import com.app.delicare.specification.RecipeSpecification;
 import lombok.RequiredArgsConstructor;
@@ -19,57 +19,57 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class RecipeService implements IRecipeService {
-    private final RecipeMapper foodRevipeMapper;
-    private final RecipeRepository foodRecipeRepository;
+    private final RecipeMapper recipeMapper;
+    private final RecipeRepository recipeRepository;
     private final UserRepository userRepository;
 
     @Override
-    public RecipeResponse createFoodRecipe(RecipeDTO foodRecepeDTO) {
+    public RecipeResponse createRecipe(RecipeDTO recipeDTO) {
         try{
-            Recipe foodRecipe = foodRevipeMapper.mapEntityToModel(foodRecepeDTO);
-            foodRecipeRepository.save(foodRecipe);
-            foodRecipeRepository.flush();
-            return foodRevipeMapper.mapResponseToEntity(foodRecipe);
+            Recipe foodRecipe = recipeMapper.mapEntityToModel(recipeDTO);
+            recipeRepository.save(foodRecipe);
+            recipeRepository.flush();
+            return recipeMapper.mapResponseToEntity(foodRecipe);
         } catch (Exception e){
             return null;
         }
     }
 
     @Override
-    public List<RecipeResponse> getAllFoodRecipen() {
+    public List<RecipeResponse> getAllRecipe() {
         Specification<Recipe> specification = Specification.where(RecipeSpecification.isNotDeleted());
-        return foodRecipeRepository.findAll(specification).stream().map(foodRecipe -> {
-                    return  foodRevipeMapper.mapResponseToEntity(foodRecipe);
+        return recipeRepository.findAll(specification).stream().map(foodRecipe -> {
+                    return  recipeMapper.mapResponseToEntity(foodRecipe);
                 })
                 .toList();
     }
 
     @Override
-    public Page<RecipeResponse> getListFoodRecipe(PageRequest pageRequest) {
+    public Page<RecipeResponse> getListRecipe(PageRequest pageRequest) {
         Specification<Recipe> specification = Specification.where(RecipeSpecification.isNotDeleted());
-        return foodRecipeRepository.findAll(specification, pageRequest).map(foodRecipe -> {
-            return foodRevipeMapper.mapResponseToEntity(foodRecipe);
+        return recipeRepository.findAll(specification, pageRequest).map(foodRecipe -> {
+            return recipeMapper.mapResponseToEntity(foodRecipe);
         });
     }
 
     @Override
-    public RecipeResponse updateFoodRecipe(Long id, RecipeDTO foodRecepeDTO) {
-        User userModified = userRepository.getReferenceById(foodRecepeDTO.getModifiedById());
-        Recipe foodIngredient = foodRevipeMapper.mapEntityToModel(foodRecepeDTO);
+    public RecipeResponse updateRecipe(Long id, RecipeDTO recipeDTO) {
+        User userModified = userRepository.getReferenceById(recipeDTO.getModifiedById());
+        Recipe foodIngredient = recipeMapper.mapEntityToModel(recipeDTO);
         foodIngredient.setId(id);
         foodIngredient.setModifiedByUser(userModified);
-        foodRecipeRepository.save(foodIngredient);
-        return foodRevipeMapper.mapResponseToEntity(foodIngredient);
+        recipeRepository.save(foodIngredient);
+        return recipeMapper.mapResponseToEntity(foodIngredient);
     }
 
     @Override
-    public RecipeResponse getFoodRecipeById(Long id) {
-        Recipe foodRecipe = foodRecipeRepository.getReferenceById(id);
-        return foodRevipeMapper.mapResponseToEntity(foodRecipe);
+    public RecipeResponse getRecipeById(Long id) {
+        Recipe foodRecipe = recipeRepository.getReferenceById(id);
+        return recipeMapper.mapResponseToEntity(foodRecipe);
     }
 
     @Override
-    public void deleteFoodRecipe(Long id) {
+    public void deleteRecipe(Long id) {
 
     }
 }

@@ -1,13 +1,12 @@
 package com.app.delicare.service;
 
-import com.app.delicare.dtos.MenuProductDTO;
-import com.app.delicare.entitys.Menu;
-import com.app.delicare.entitys.MenuProduct;
-import com.app.delicare.entitys.User;
+import com.app.delicare.dtos.menu.MenuProductDTO;
+import com.app.delicare.entitys.menu.MenuProduct;
+import com.app.delicare.entitys.user.User;
 import com.app.delicare.mappers.MenuProductMapper;
-import com.app.delicare.repositories.MenuProductRepository;
-import com.app.delicare.repositories.UserRepository;
-import com.app.delicare.responses.MenuProductResponse;
+import com.app.delicare.repositories.menu.MenuProductRepository;
+import com.app.delicare.repositories.user.UserRepository;
+import com.app.delicare.responses.menu.MenuProductResponse;
 import com.app.delicare.service.implement.IMenuProductService;
 import com.app.delicare.specification.MenuProductSpecification;
 import lombok.RequiredArgsConstructor;

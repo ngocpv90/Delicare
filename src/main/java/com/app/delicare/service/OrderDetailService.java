@@ -1,17 +1,14 @@
 package com.app.delicare.service;
 
-import com.app.delicare.dtos.OrderDTO;
-import com.app.delicare.dtos.OrderDetailDTO;
-import com.app.delicare.entitys.Order;
-import com.app.delicare.entitys.OrderDetail;
-import com.app.delicare.entitys.User;
+import com.app.delicare.dtos.order.OrderDetailDTO;
+import com.app.delicare.entitys.order.OrderDetail;
+import com.app.delicare.entitys.user.User;
 import com.app.delicare.mappers.OrderDetailMapper;
-import com.app.delicare.repositories.OrderDetailRepository;
-import com.app.delicare.repositories.UserRepository;
-import com.app.delicare.responses.OrderDetailResponse;
+import com.app.delicare.repositories.order.OrderDetailRepository;
+import com.app.delicare.repositories.user.UserRepository;
+import com.app.delicare.responses.order.OrderDetailResponse;
 import com.app.delicare.service.implement.IOrderDetailService;
 import com.app.delicare.specification.OrderDetailSpecification;
-import com.app.delicare.specification.OrderSpecification;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -26,6 +23,18 @@ public class OrderDetailService implements IOrderDetailService {
     private final OrderDetailRepository orderDetailRepository;
     private final OrderDetailMapper orderDetailMapper;
     private final UserRepository userRepository;
+
+    @Override
+    public Long saveAll(List<OrderDetailDTO> orderDetailDTOS) {
+        try{
+            List<OrderDetail> orderDetails = orderDetailMapper.mapEntityToModel(orderDetailDTOS);
+            orderDetailRepository.saveAll(orderDetails);
+            orderDetailRepository.flush();
+            return orderDetails.stream().count();
+        } catch (Exception e){
+            return 0L;
+        }
+    }
 
     @Override
     public OrderDetailResponse createOrderDetail(OrderDetailDTO orderDetailDTO) {
@@ -74,6 +83,11 @@ public class OrderDetailService implements IOrderDetailService {
 
     @Override
     public void deleteOrderDetail(Long id) {
+
+    }
+
+    @Override
+    public void deleteOrderDetailByOrderId(Long id) {
 
     }
 }

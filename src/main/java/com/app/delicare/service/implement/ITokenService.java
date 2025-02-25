@@ -1,7 +1,7 @@
 package com.app.delicare.service.implement;
 
-import com.app.delicare.entitys.Token;
-import com.app.delicare.dtos.TokenDTO;
+import com.app.delicare.entitys.token.Token;
+import com.app.delicare.dtos.login.TokenDTO;
 
 import java.util.List;
 

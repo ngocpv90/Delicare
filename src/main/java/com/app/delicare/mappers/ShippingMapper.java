@@ -1,10 +1,10 @@
 package com.app.delicare.mappers;
 
-import com.app.delicare.dtos.ShippingDTO;
-import com.app.delicare.entitys.Shipping;
+import com.app.delicare.dtos.category.ShippingDTO;
+import com.app.delicare.entitys.category.Shipping;
 import com.app.delicare.mappers.base.BaseMapper;
-import com.app.delicare.repositories.UserRepository;
-import com.app.delicare.responses.ShippingResponse;
+import com.app.delicare.repositories.user.UserRepository;
+import com.app.delicare.responses.category.ShippingResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

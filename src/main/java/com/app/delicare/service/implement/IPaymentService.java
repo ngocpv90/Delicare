@@ -1,9 +1,7 @@
 package com.app.delicare.service.implement;
 
-import com.app.delicare.dtos.MenuDTO;
-import com.app.delicare.dtos.PaymentDTO;
-import com.app.delicare.responses.MenuResponse;
-import com.app.delicare.responses.PaymentResponse;
+import com.app.delicare.dtos.category.PaymentDTO;
+import com.app.delicare.responses.category.PaymentResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 

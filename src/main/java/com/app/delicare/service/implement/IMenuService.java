@@ -1,9 +1,7 @@
 package com.app.delicare.service.implement;
 
-import com.app.delicare.dtos.MenuDTO;
-import com.app.delicare.dtos.ProductDTO;
-import com.app.delicare.responses.MenuResponse;
-import com.app.delicare.responses.ProductResponse;
+import com.app.delicare.dtos.menu.MenuDTO;
+import com.app.delicare.responses.menu.MenuResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 

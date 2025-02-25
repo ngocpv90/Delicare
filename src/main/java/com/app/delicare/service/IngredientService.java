@@ -1,11 +1,11 @@
 package com.app.delicare.service;
 
-import com.app.delicare.dtos.IngredientDTO;
-import com.app.delicare.entitys.Ingredient;
-import com.app.delicare.entitys.User;
+import com.app.delicare.dtos.ingredient.IngredientDTO;
+import com.app.delicare.entitys.ingredient.Ingredient;
+import com.app.delicare.entitys.user.User;
 import com.app.delicare.mappers.IngredientMapper;
 import com.app.delicare.repositories.IngredientRepository;
-import com.app.delicare.repositories.UserRepository;
+import com.app.delicare.repositories.user.UserRepository;
 import com.app.delicare.responses.IngredientResponse;
 import com.app.delicare.service.implement.IIngredientService;
 import com.app.delicare.specification.IngredientSpecification;

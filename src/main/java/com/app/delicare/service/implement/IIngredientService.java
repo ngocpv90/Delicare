@@ -1,6 +1,6 @@
 package com.app.delicare.service.implement;
 
-import com.app.delicare.dtos.IngredientDTO;
+import com.app.delicare.dtos.ingredient.IngredientDTO;
 import com.app.delicare.responses.IngredientResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

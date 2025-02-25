@@ -1,13 +1,8 @@
 package com.app.delicare.mappers;
-import com.app.delicare.dtos.GroupDTO;
-import com.app.delicare.dtos.ProvinceDTO;
-import com.app.delicare.entitys.Department;
-import com.app.delicare.entitys.Group;
-import com.app.delicare.entitys.Province;
-import com.app.delicare.entitys.User;
+import com.app.delicare.dtos.address.ProvinceDTO;
+import com.app.delicare.entitys.address.Province;
 import com.app.delicare.mappers.base.BaseMapper;
-import com.app.delicare.responses.GroupResponse;
-import com.app.delicare.responses.ProvinceResponse;
+import com.app.delicare.responses.address.ProvinceResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

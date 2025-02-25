@@ -1,10 +1,9 @@
 package com.app.delicare.mappers;
-import com.app.delicare.dtos.WardDTO;
-import com.app.delicare.entitys.District;
-import com.app.delicare.entitys.User;
-import com.app.delicare.entitys.Ward;
+import com.app.delicare.dtos.address.WardDTO;
+import com.app.delicare.entitys.address.District;
+import com.app.delicare.entitys.address.Ward;
 import com.app.delicare.mappers.base.BaseMapper;
-import com.app.delicare.responses.WardResponse;
+import com.app.delicare.responses.address.WardResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

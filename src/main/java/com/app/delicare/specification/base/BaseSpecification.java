@@ -71,10 +71,6 @@ public abstract class BaseSpecification<T> {
             }
 
             switch (condition) {
-
-                case "equal":
-                    return builder.equal(root.get(manyToOneName).get(columnName), objectValue);
-
                 case "notEqual":
                     return builder.notEqual(root.get(manyToOneName).get(columnName), objectValue);
 

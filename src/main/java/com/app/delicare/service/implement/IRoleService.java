@@ -1,6 +1,6 @@
 package com.app.delicare.service.implement;
 
-import com.app.delicare.dtos.RoleDTO;
+import com.app.delicare.dtos.category.RoleDTO;
 import com.app.delicare.responses.RoleResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

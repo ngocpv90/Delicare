@@ -1,14 +1,18 @@
 package com.app.delicare.mappers;
 
 import com.app.delicare.component.CommonUtils;
-import com.app.delicare.dtos.OrderDetailDTO;
-import com.app.delicare.entitys.*;
+import com.app.delicare.dtos.order.OrderDetailDTO;
+import com.app.delicare.entitys.menu.Menu;
+import com.app.delicare.entitys.order.Order;
+import com.app.delicare.entitys.order.OrderDetail;
 import com.app.delicare.mappers.base.BaseMapper;
-import com.app.delicare.repositories.*;
-import com.app.delicare.responses.OrderDetailResponse;
+import com.app.delicare.repositories.menu.MenuRepository;
+import com.app.delicare.repositories.order.OrderRepository;
+import com.app.delicare.responses.order.OrderDetailResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -37,6 +41,12 @@ public class OrderDetailMapper extends BaseMapper {
         }
         orderDetail.setStatus(orderDetailDTO.getStatus());
         return orderDetail;
+    }
+
+    public List<OrderDetail> mapEntityToModel(List<OrderDetailDTO> orderDetailDTOS){
+        return orderDetailDTOS.stream().map(orderDetailDTO -> {
+            return mapEntityToModel(orderDetailDTO);
+        }).toList();
     }
 
     public OrderDetailResponse mapResponseToEntity(OrderDetail orderDetail){

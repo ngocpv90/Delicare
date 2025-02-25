@@ -1,8 +1,7 @@
 package com.app.delicare.mappers;
 
-import com.app.delicare.dtos.RoleDTO;
-import com.app.delicare.entitys.Province;
-import com.app.delicare.entitys.Role;
+import com.app.delicare.dtos.category.RoleDTO;
+import com.app.delicare.entitys.category.Role;
 import com.app.delicare.mappers.base.BaseMapper;
 import com.app.delicare.responses.RoleResponse;
 import lombok.RequiredArgsConstructor;

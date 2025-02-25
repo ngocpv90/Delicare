@@ -1,9 +1,9 @@
 package com.app.delicare.service;
 
-import com.app.delicare.entitys.Token;
-import com.app.delicare.dtos.TokenDTO;
+import com.app.delicare.entitys.token.Token;
+import com.app.delicare.dtos.login.TokenDTO;
 import com.app.delicare.repositories.TokenRepository;
-import com.app.delicare.repositories.UserRepository;
+import com.app.delicare.repositories.user.UserRepository;
 import com.app.delicare.service.implement.ITokenService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,4 @@
 package com.app.delicare.responses.base;
-import com.app.delicare.entitys.Role;
-import com.app.delicare.responses.base.BaseResponse;
 import lombok.*;
 
 @Builder

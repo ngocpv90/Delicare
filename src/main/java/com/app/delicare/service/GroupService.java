@@ -1,16 +1,16 @@
 package com.app.delicare.service;
 
 import com.app.delicare.common.enums.ESpecification;
-import com.app.delicare.entitys.Department;
-import com.app.delicare.entitys.Group;
-import com.app.delicare.dtos.GroupDTO;
-import com.app.delicare.entitys.User;
+import com.app.delicare.entitys.category.Department;
+import com.app.delicare.entitys.category.Group;
+import com.app.delicare.dtos.category.GroupDTO;
+import com.app.delicare.entitys.user.User;
 import com.app.delicare.mappers.GroupMapper;
-import com.app.delicare.repositories.DepartmentRepository;
-import com.app.delicare.repositories.GroupRepository;
-import com.app.delicare.repositories.UserRepository;
+import com.app.delicare.repositories.category.DepartmentRepository;
+import com.app.delicare.repositories.category.GroupRepository;
+import com.app.delicare.repositories.user.UserRepository;
 import com.app.delicare.specification.GroupSpecification;
-import com.app.delicare.responses.GroupResponse;
+import com.app.delicare.responses.category.GroupResponse;
 import com.app.delicare.service.implement.IGroupService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

@@ -1,12 +1,12 @@
 package com.app.delicare.service;
 
-import com.app.delicare.dtos.PaymentDTO;
-import com.app.delicare.entitys.Payment;
-import com.app.delicare.entitys.User;
+import com.app.delicare.dtos.category.PaymentDTO;
+import com.app.delicare.entitys.category.Payment;
+import com.app.delicare.entitys.user.User;
 import com.app.delicare.mappers.PaymentMapper;
-import com.app.delicare.repositories.PaymentRepository;
-import com.app.delicare.repositories.UserRepository;
-import com.app.delicare.responses.PaymentResponse;
+import com.app.delicare.repositories.category.PaymentRepository;
+import com.app.delicare.repositories.user.UserRepository;
+import com.app.delicare.responses.category.PaymentResponse;
 import com.app.delicare.service.implement.IPaymentService;
 import com.app.delicare.specification.PaymentSpecification;
 import lombok.RequiredArgsConstructor;

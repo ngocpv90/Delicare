@@ -1,16 +1,18 @@
 package com.app.delicare.mappers;
 
 import com.app.delicare.component.CommonUtils;
-import com.app.delicare.dtos.UserAddressDTO;
-import com.app.delicare.dtos.UserDTO;
-import com.app.delicare.entitys.*;
+import com.app.delicare.dtos.user.UserAddressDTO;
+import com.app.delicare.entitys.address.District;
+import com.app.delicare.entitys.address.Province;
+import com.app.delicare.entitys.address.Ward;
+import com.app.delicare.entitys.user.User;
+import com.app.delicare.entitys.user.UserAddress;
 import com.app.delicare.mappers.base.BaseMapper;
-import com.app.delicare.repositories.DistrictRepository;
-import com.app.delicare.repositories.ProvinceRepository;
-import com.app.delicare.repositories.UserRepository;
-import com.app.delicare.repositories.WardRepository;
-import com.app.delicare.responses.UserAddressResponse;
-import com.app.delicare.responses.UserResponse;
+import com.app.delicare.repositories.address.DistrictRepository;
+import com.app.delicare.repositories.address.ProvinceRepository;
+import com.app.delicare.repositories.user.UserRepository;
+import com.app.delicare.repositories.address.WardRepository;
+import com.app.delicare.responses.user.UserAddressResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

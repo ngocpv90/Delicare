@@ -2,14 +2,12 @@ package com.app.delicare.controllers;
 import com.app.delicare.common.enums.EAction;
 import com.app.delicare.common.enums.EFunction;
 import com.app.delicare.component.CommonUtils;
-import com.app.delicare.component.JwtTokenUtils;
 import com.app.delicare.component.MessageUtils;
-import com.app.delicare.dtos.LoginDTO;
-import com.app.delicare.dtos.TokenVerifyDTO;
-import com.app.delicare.dtos.UserDTO;
+import com.app.delicare.dtos.login.LoginDTO;
+import com.app.delicare.dtos.login.TokenVerifyDTO;
+import com.app.delicare.dtos.user.UserDTO;
 import com.app.delicare.responses.LoginResponse;
-import com.app.delicare.responses.UserResponse;
-import com.app.delicare.responses.base.OptionResponse;
+import com.app.delicare.responses.user.UserResponse;
 import com.app.delicare.responses.base.SystemResponse;
 import com.app.delicare.responses.base.SystemResponses;
 import com.app.delicare.service.*;
@@ -26,7 +24,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController

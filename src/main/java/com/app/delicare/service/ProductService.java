@@ -1,11 +1,12 @@
 package com.app.delicare.service;
 
-import com.app.delicare.dtos.ProductDTO;
-import com.app.delicare.entitys.*;
+import com.app.delicare.dtos.product.ProductDTO;
+import com.app.delicare.entitys.product.Product;
+import com.app.delicare.entitys.user.User;
 import com.app.delicare.mappers.ProductMapper;
-import com.app.delicare.repositories.ProductRepository;
-import com.app.delicare.repositories.UserRepository;
-import com.app.delicare.responses.ProductResponse;
+import com.app.delicare.repositories.product.ProductRepository;
+import com.app.delicare.repositories.user.UserRepository;
+import com.app.delicare.responses.product.ProductResponse;
 import com.app.delicare.service.implement.IProductService;
 import com.app.delicare.specification.ProductSpecification;
 import lombok.RequiredArgsConstructor;

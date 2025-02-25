@@ -1,10 +1,9 @@
 package com.app.delicare.mappers;
 
-import com.app.delicare.dtos.TitleDTO;
-import com.app.delicare.entitys.Stage;
-import com.app.delicare.entitys.Title;
+import com.app.delicare.dtos.category.TitleDTO;
+import com.app.delicare.entitys.category.Title;
 import com.app.delicare.mappers.base.BaseMapper;
-import com.app.delicare.responses.TitleResponse;
+import com.app.delicare.responses.category.TitleResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

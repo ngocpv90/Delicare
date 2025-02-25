@@ -1,5 +1,5 @@
 package com.app.delicare.configs;
-import com.app.delicare.repositories.UserRepository;
+import com.app.delicare.repositories.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

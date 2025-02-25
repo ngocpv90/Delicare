@@ -1,7 +1,7 @@
 package com.app.delicare.service.implement;
 
-import com.app.delicare.dtos.TitleDTO;
-import com.app.delicare.responses.TitleResponse;
+import com.app.delicare.dtos.category.TitleDTO;
+import com.app.delicare.responses.category.TitleResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 

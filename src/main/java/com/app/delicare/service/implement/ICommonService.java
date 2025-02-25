@@ -1,6 +1,6 @@
 package com.app.delicare.service.implement;
 
-import com.app.delicare.responses.UserResponse;
+import com.app.delicare.responses.user.UserResponse;
 import org.springframework.security.core.Authentication;
 
 public interface ICommonService {

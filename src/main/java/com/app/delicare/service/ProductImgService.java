@@ -1,16 +1,14 @@
 package com.app.delicare.service;
 
-import com.app.delicare.dtos.ProductImgDTO;
-import com.app.delicare.entitys.Product;
-import com.app.delicare.entitys.ProductImg;
-import com.app.delicare.entitys.User;
+import com.app.delicare.dtos.product.ProductImgDTO;
+import com.app.delicare.entitys.product.ProductImg;
+import com.app.delicare.entitys.user.User;
 import com.app.delicare.mappers.ProductImgMapper;
-import com.app.delicare.repositories.ProductImgRepository;
-import com.app.delicare.repositories.UserRepository;
-import com.app.delicare.responses.ProductImgResponse;
+import com.app.delicare.repositories.product.ProductImgRepository;
+import com.app.delicare.repositories.user.UserRepository;
+import com.app.delicare.responses.product.ProductImgResponse;
 import com.app.delicare.service.implement.IProductImgService;
 import com.app.delicare.specification.ProductImgSpecification;
-import com.app.delicare.specification.ProductSpecification;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

@@ -1,13 +1,13 @@
 package com.app.delicare.mappers;
 
 import com.app.delicare.component.CommonUtils;
-import com.app.delicare.dtos.ProductImgDTO;
-import com.app.delicare.entitys.Product;
-import com.app.delicare.entitys.ProductImg;
+import com.app.delicare.dtos.product.ProductImgDTO;
+import com.app.delicare.entitys.product.Product;
+import com.app.delicare.entitys.product.ProductImg;
 import com.app.delicare.mappers.base.BaseMapper;
-import com.app.delicare.repositories.ProductRepository;
-import com.app.delicare.repositories.UserRepository;
-import com.app.delicare.responses.ProductImgResponse;
+import com.app.delicare.repositories.product.ProductRepository;
+import com.app.delicare.repositories.user.UserRepository;
+import com.app.delicare.responses.product.ProductImgResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

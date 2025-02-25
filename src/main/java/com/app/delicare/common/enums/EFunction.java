@@ -24,7 +24,14 @@ public enum EFunction {
     FUNCTION("function"),
     ACTION("action"),
     NEED("need"),
-
+    MENU_DAY("menuDay"),
+    ORDERS("orders"),
+    ORDER_DETAIL("orderDetail"),
+    UNIT("units"),
+    INGREDIENT("ingredients"),
+    RECIPE("recipes"),
+    RECIPE_INGREDIENT("recipeIngredient"),
+    PRODUCT("products"),
     ;
 
 

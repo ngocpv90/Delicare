@@ -1,10 +1,11 @@
 package com.app.delicare.mappers;
 
 import com.app.delicare.component.CommonUtils;
-import com.app.delicare.dtos.IngredientDTO;
-import com.app.delicare.entitys.*;
+import com.app.delicare.dtos.ingredient.IngredientDTO;
+import com.app.delicare.entitys.category.Units;
+import com.app.delicare.entitys.ingredient.Ingredient;
 import com.app.delicare.mappers.base.BaseMapper;
-import com.app.delicare.repositories.UnitRepository;
+import com.app.delicare.repositories.category.UnitRepository;
 import com.app.delicare.responses.IngredientResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

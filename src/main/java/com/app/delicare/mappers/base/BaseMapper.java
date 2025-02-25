@@ -1,5 +1,5 @@
 package com.app.delicare.mappers.base;
-import com.app.delicare.entitys.User;
+import com.app.delicare.entitys.user.User;
 import com.app.delicare.responses.base.CreateByUserResponse;
 import com.app.delicare.responses.base.ModifiedByUserResponse;
 import lombok.RequiredArgsConstructor;

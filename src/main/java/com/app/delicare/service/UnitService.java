@@ -1,16 +1,14 @@
 package com.app.delicare.service;
 
-import com.app.delicare.dtos.UnitDTO;
-import com.app.delicare.entitys.Units;
-import com.app.delicare.entitys.User;
-import com.app.delicare.entitys.UserAddress;
+import com.app.delicare.dtos.category.UnitDTO;
+import com.app.delicare.entitys.category.Units;
+import com.app.delicare.entitys.user.User;
 import com.app.delicare.mappers.UnitMapper;
-import com.app.delicare.repositories.UnitRepository;
-import com.app.delicare.repositories.UserRepository;
+import com.app.delicare.repositories.category.UnitRepository;
+import com.app.delicare.repositories.user.UserRepository;
 import com.app.delicare.responses.UnitResponse;
 import com.app.delicare.service.implement.IUnitService;
 import com.app.delicare.specification.UnitSpecification;
-import com.app.delicare.specification.UserAddressSpecification;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

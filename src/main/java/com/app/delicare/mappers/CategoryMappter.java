@@ -1,13 +1,10 @@
 package com.app.delicare.mappers;
 
-import com.app.delicare.dtos.CategoryDTO;
-import com.app.delicare.dtos.MenuDTO;
-import com.app.delicare.entitys.Category;
-import com.app.delicare.entitys.Menu;
+import com.app.delicare.dtos.category.CategoryDTO;
+import com.app.delicare.entitys.category.Category;
 import com.app.delicare.mappers.base.BaseMapper;
-import com.app.delicare.repositories.UserRepository;
-import com.app.delicare.responses.CategoryResponse;
-import com.app.delicare.responses.MenuResponse;
+import com.app.delicare.repositories.user.UserRepository;
+import com.app.delicare.responses.category.CategoryResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

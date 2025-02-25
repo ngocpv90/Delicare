@@ -1,12 +1,12 @@
 package com.app.delicare.service;
 
-import com.app.delicare.entitys.Title;
-import com.app.delicare.dtos.TitleDTO;
-import com.app.delicare.entitys.User;
+import com.app.delicare.entitys.category.Title;
+import com.app.delicare.dtos.category.TitleDTO;
+import com.app.delicare.entitys.user.User;
 import com.app.delicare.mappers.TitleMapper;
-import com.app.delicare.repositories.TitleRepository;
-import com.app.delicare.repositories.UserRepository;
-import com.app.delicare.responses.TitleResponse;
+import com.app.delicare.repositories.category.TitleRepository;
+import com.app.delicare.repositories.user.UserRepository;
+import com.app.delicare.responses.category.TitleResponse;
 import com.app.delicare.service.implement.ITtiteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

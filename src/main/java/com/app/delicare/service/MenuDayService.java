@@ -1,13 +1,15 @@
 package com.app.delicare.service;
 
 
-import com.app.delicare.dtos.MenuDayDTO;
-import com.app.delicare.entitys.MenuDay;
-import com.app.delicare.entitys.User;
+import com.app.delicare.common.enums.ESpecification;
+import com.app.delicare.component.CommonUtils;
+import com.app.delicare.dtos.menu.MenuDayDTO;
+import com.app.delicare.entitys.menu.MenuDay;
+import com.app.delicare.entitys.user.User;
 import com.app.delicare.mappers.MenuDayMapper;
-import com.app.delicare.repositories.MenuDayRepository;
-import com.app.delicare.repositories.UserRepository;
-import com.app.delicare.responses.MenuDayResponse;
+import com.app.delicare.repositories.menu.MenuDayRepository;
+import com.app.delicare.repositories.user.UserRepository;
+import com.app.delicare.responses.menu.MenuDayResponse;
 import com.app.delicare.service.implement.IMenuDayService;
 import com.app.delicare.specification.MenuDaySpecification;
 import lombok.RequiredArgsConstructor;
@@ -39,8 +41,24 @@ public class MenuDayService implements IMenuDayService {
     }
 
     @Override
-    public List<MenuDayResponse> getAllMenuDay() {
+    public List<MenuDayResponse> getAllMenuDay(MenuDayDTO menuDayDTO) {
         Specification<MenuDay> specification = Specification.where(MenuDaySpecification.isNotDeleted());
+        if(!CommonUtils.isNullOrEmpty(menuDayDTO.getMenuId())){
+            specification.and(MenuDaySpecification.hasMenuId(menuDayDTO.getMenuId(), ESpecification.EQUAL.getValue()));
+        }
+        if(!CommonUtils.isNullOrEmpty(menuDayDTO.getMenuDate())){
+            specification.and(MenuDaySpecification.hasMenuDate(menuDayDTO.getMenuDate(), ESpecification.EQUAL.getValue()));
+        }
+        if(!CommonUtils.isNullOrEmpty(menuDayDTO.getMenuWeek())){
+            specification.and(MenuDaySpecification.hasMenuWeek(menuDayDTO.getMenuWeek(), ESpecification.EQUAL.getValue()));
+        }
+        if(!CommonUtils.isNullOrEmpty(menuDayDTO.getMenuMonth())){
+            specification.and(MenuDaySpecification.hasMenuMonth(menuDayDTO.getMenuMonth(), ESpecification.EQUAL.getValue()));
+        }
+        if(!CommonUtils.isNullOrEmpty(menuDayDTO.getMenuYear())){
+            specification.and(MenuDaySpecification.hasMenuYear(menuDayDTO.getMenuYear(), ESpecification.EQUAL.getValue()));
+        }
+
         return menuDayRepository.findAll(specification).stream().map(menuDay -> {
                     return  menuDayMapper.mapResponseToEntity(menuDay);
                 })
@@ -48,8 +66,24 @@ public class MenuDayService implements IMenuDayService {
     }
 
     @Override
-    public Page<MenuDayResponse> getListMenuDay(PageRequest pageRequest) {
+    public Page<MenuDayResponse> getListMenuDay(PageRequest pageRequest, MenuDayDTO menuDayDTO) {
         Specification<MenuDay> specification = Specification.where(MenuDaySpecification.isNotDeleted());
+        if(!CommonUtils.isNullOrEmpty(menuDayDTO.getMenuId())){
+            specification.and(MenuDaySpecification.hasMenuId(menuDayDTO.getMenuId(), ESpecification.EQUAL.getValue()));
+        }
+        if(!CommonUtils.isNullOrEmpty(menuDayDTO.getMenuDate())){
+            specification.and(MenuDaySpecification.hasMenuDate(menuDayDTO.getMenuDate(), ESpecification.EQUAL.getValue()));
+        }
+        if(!CommonUtils.isNullOrEmpty(menuDayDTO.getMenuWeek())){
+            specification.and(MenuDaySpecification.hasMenuWeek(menuDayDTO.getMenuWeek(), ESpecification.EQUAL.getValue()));
+        }
+        if(!CommonUtils.isNullOrEmpty(menuDayDTO.getMenuMonth())){
+            specification.and(MenuDaySpecification.hasMenuMonth(menuDayDTO.getMenuMonth(), ESpecification.EQUAL.getValue()));
+        }
+        if(!CommonUtils.isNullOrEmpty(menuDayDTO.getMenuYear())){
+            specification.and(MenuDaySpecification.hasMenuYear(menuDayDTO.getMenuYear(), ESpecification.EQUAL.getValue()));
+        }
+
         return menuDayRepository.findAll(specification, pageRequest).map(menuDay -> {
             return menuDayMapper.mapResponseToEntity(menuDay);
         });

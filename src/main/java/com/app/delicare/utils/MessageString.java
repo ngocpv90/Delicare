@@ -7,7 +7,8 @@ public class MessageString {
     public static final String SYSTEM_CREATE_FAILED = "system.create.failed";
     public static final String SYSTEM_UPDATE_SUCCESSFULLY = "system.update.successfully";
     public static final String SYSTEM_UPDATE_FAILED = "system.update.failed";
-    public static final String SYSTEM__DELETE_SUCCESSFULLY = "system.delete.successfully";
+    public static final String SYSTEM_DELETE_SUCCESSFULLY = "system.delete.successfully";
+    public static final String SYSTEM__DELETE_FAILED = "system.delete.failed";
     public static final String SYSTEM_DATA_EXISTS = "system.data.exists";
 
     public static final String SYSTEM_PERMISSION = "system.permission";

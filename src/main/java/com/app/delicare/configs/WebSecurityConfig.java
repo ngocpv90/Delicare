@@ -1,5 +1,5 @@
 package com.app.delicare.configs;
-import com.app.delicare.entitys.Role;
+import com.app.delicare.entitys.category.Role;
 import com.app.delicare.filters.JwtTokenFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;

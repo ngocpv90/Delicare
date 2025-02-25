@@ -2,7 +2,7 @@ package com.app.delicare.specification;
 
 import com.app.delicare.common.enums.ECommon;
 import com.app.delicare.common.enums.ESpecification;
-import com.app.delicare.entitys.Department;
+import com.app.delicare.entitys.category.Department;
 import com.app.delicare.specification.base.BaseSpecification;
 import org.springframework.data.jpa.domain.Specification;
 

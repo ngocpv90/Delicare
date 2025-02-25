@@ -1,11 +1,19 @@
 package com.app.delicare.mappers;
 
 import com.app.delicare.component.CommonUtils;
-import com.app.delicare.entitys.*;
-import com.app.delicare.dtos.UserDTO;
+import com.app.delicare.dtos.user.UserDTO;
+import com.app.delicare.entitys.category.Department;
+import com.app.delicare.entitys.category.Group;
+import com.app.delicare.entitys.category.Role;
+import com.app.delicare.entitys.category.Title;
+import com.app.delicare.entitys.user.User;
 import com.app.delicare.mappers.base.BaseMapper;
-import com.app.delicare.repositories.*;
-import com.app.delicare.responses.UserResponse;
+import com.app.delicare.repositories.category.DepartmentRepository;
+import com.app.delicare.repositories.category.GroupRepository;
+import com.app.delicare.repositories.category.RoleRepository;
+import com.app.delicare.repositories.category.TitleRepository;
+import com.app.delicare.repositories.user.UserRepository;
+import com.app.delicare.responses.user.UserResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;

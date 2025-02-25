@@ -1,7 +1,7 @@
 package com.app.delicare.mappers;
 
-import com.app.delicare.dtos.UnitDTO;
-import com.app.delicare.entitys.Units;
+import com.app.delicare.dtos.category.UnitDTO;
+import com.app.delicare.entitys.category.Units;
 import com.app.delicare.mappers.base.BaseMapper;
 import com.app.delicare.responses.UnitResponse;
 import lombok.RequiredArgsConstructor;

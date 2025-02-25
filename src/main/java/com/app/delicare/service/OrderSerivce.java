@@ -1,15 +1,17 @@
 package com.app.delicare.service;
 
-import com.app.delicare.dtos.OrderDTO;
-import com.app.delicare.entitys.Menu;
-import com.app.delicare.entitys.Order;
-import com.app.delicare.entitys.User;
+import com.app.delicare.component.CommonUtils;
+import com.app.delicare.dtos.order.OrderDTO;
+import com.app.delicare.dtos.order.OrderDetailsDTO;
+import com.app.delicare.entitys.order.Order;
+import com.app.delicare.entitys.user.User;
+import com.app.delicare.mappers.OrderDetailMapper;
 import com.app.delicare.mappers.OrderMapper;
-import com.app.delicare.repositories.OrderRepository;
-import com.app.delicare.repositories.UserRepository;
-import com.app.delicare.responses.OrderResponse;
+import com.app.delicare.repositories.order.OrderDetailRepository;
+import com.app.delicare.repositories.order.OrderRepository;
+import com.app.delicare.repositories.user.UserRepository;
+import com.app.delicare.responses.order.OrderResponse;
 import com.app.delicare.service.implement.IOrderService;
-import com.app.delicare.specification.MenuSpecification;
 import com.app.delicare.specification.OrderSpecification;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -24,6 +26,8 @@ import java.util.List;
 public class OrderSerivce implements IOrderService {
     private final OrderRepository orderRepository;
     private final UserRepository userRepository;
+    private final OrderDetailRepository orderDetailRepository;
+    private final OrderDetailMapper orderDetailMapper;
     private final OrderMapper orderMapper;
 
     @Override
@@ -39,7 +43,27 @@ public class OrderSerivce implements IOrderService {
     }
 
     @Override
-    public List<OrderResponse> getAllOrder() {
+    public OrderResponse createOrder(OrderDTO orderDTO, OrderDetailsDTO orderDetailsDTO) {
+        try{
+            Order order = orderMapper.mapEntityToModel(orderDTO);
+            orderRepository.save(order);
+            orderRepository.flush();
+
+            if(!CommonUtils.isNullOrEmpty(orderDetailsDTO.getOrderDetails())){
+                orderDetailsDTO.getOrderDetails().forEach(orderDetailDTO -> {
+                    orderDetailDTO.setOrderId(order.getId());
+                });
+                orderDetailRepository.deleteByOrderId(order.getId());
+                orderDetailRepository.saveAll(orderDetailMapper.mapEntityToModel(orderDetailsDTO.getOrderDetails()));
+            }
+            return orderMapper.mapResponseToEntity(order);
+        } catch (Exception e){
+            return null;
+        }
+    }
+
+    @Override
+    public List<OrderResponse> getAllOrder(OrderDTO orderDTO) {
         Specification<Order> specification = Specification.where(OrderSpecification.isNotDeleted());
         return orderRepository.findAll(specification).stream().map(order -> {
                     return  orderMapper.mapResponseToEntity(order);
@@ -48,7 +72,7 @@ public class OrderSerivce implements IOrderService {
     }
 
     @Override
-    public Page<OrderResponse> getListOrder(PageRequest pageRequest) {
+    public Page<OrderResponse> getListOrder(PageRequest pageRequest, OrderDTO orderDTO) {
         Specification<Order> specification = Specification.where(OrderSpecification.isNotDeleted());
         return orderRepository.findAll(specification, pageRequest).map(order -> {
             return orderMapper.mapResponseToEntity(order);

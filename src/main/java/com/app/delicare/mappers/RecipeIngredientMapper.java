@@ -1,18 +1,20 @@
 package com.app.delicare.mappers;
 
 import com.app.delicare.component.CommonUtils;
-import com.app.delicare.dtos.RecipeIngredientDTO;
-import com.app.delicare.entitys.Ingredient;
-import com.app.delicare.entitys.Recipe;
-import com.app.delicare.entitys.RecipeIngredient;
+import com.app.delicare.dtos.order.OrderDetailDTO;
+import com.app.delicare.dtos.recipe.RecipeIngredientDTO;
+import com.app.delicare.entitys.ingredient.Ingredient;
+import com.app.delicare.entitys.order.OrderDetail;
+import com.app.delicare.entitys.recipe.Recipe;
+import com.app.delicare.entitys.recipe.RecipeIngredient;
 import com.app.delicare.mappers.base.BaseMapper;
 import com.app.delicare.repositories.IngredientRepository;
-import com.app.delicare.repositories.RecipeRepository;
-import com.app.delicare.responses.IngredientResponse;
-import com.app.delicare.responses.RecipeIngredientResponse;
+import com.app.delicare.repositories.ingredient.RecipeRepository;
+import com.app.delicare.responses.recipe.RecipeIngredientResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -38,6 +40,12 @@ public class RecipeIngredientMapper extends BaseMapper {
         }
         recipeIngredient.setStatus(recipeIngredientDTO.getStatus());
         return recipeIngredient;
+    }
+
+    public List<RecipeIngredient> mapEntityToModel(List<RecipeIngredientDTO> recipeIngredientDTOList){
+        return recipeIngredientDTOList.stream().map(recipeIngredientDTO -> {
+            return mapEntityToModel(recipeIngredientDTO);
+        }).toList();
     }
 
     public RecipeIngredientResponse mapResponseToEntity(RecipeIngredient recipeIngredient){

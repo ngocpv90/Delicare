@@ -1,12 +1,11 @@
 package com.app.delicare.mappers;
-import com.app.delicare.dtos.UserHistoryDTO;
-import com.app.delicare.entitys.*;
-import com.app.delicare.dtos.UserDTO;
+import com.app.delicare.dtos.user.UserHistoryDTO;
+import com.app.delicare.dtos.user.UserDTO;
+import com.app.delicare.entitys.user.User;
+import com.app.delicare.entitys.user.UserHistory;
 import com.app.delicare.mappers.base.BaseMapper;
-import com.app.delicare.responses.UserHistoryResponse;
-import com.app.delicare.responses.UserResponse;
+import com.app.delicare.responses.user.UserHistoryResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;

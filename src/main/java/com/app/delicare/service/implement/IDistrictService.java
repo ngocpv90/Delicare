@@ -1,8 +1,7 @@
 package com.app.delicare.service.implement;
 
-import com.app.delicare.entitys.District;
-import com.app.delicare.dtos.DistrictDTO;
-import com.app.delicare.responses.DistrictResponse;
+import com.app.delicare.dtos.address.DistrictDTO;
+import com.app.delicare.responses.address.DistrictResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 

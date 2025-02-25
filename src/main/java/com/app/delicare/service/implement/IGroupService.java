@@ -1,7 +1,7 @@
 package com.app.delicare.service.implement;
 
-import com.app.delicare.dtos.GroupDTO;
-import com.app.delicare.responses.GroupResponse;
+import com.app.delicare.dtos.category.GroupDTO;
+import com.app.delicare.responses.category.GroupResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 

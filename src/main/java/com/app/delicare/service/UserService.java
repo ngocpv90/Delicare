@@ -2,12 +2,12 @@ package com.app.delicare.service;
 
 import com.app.delicare.component.CommonUtils;
 import com.app.delicare.component.JwtTokenUtils;
-import com.app.delicare.entitys.*;
+import com.app.delicare.entitys.user.User;
 import com.app.delicare.mappers.UserMapper;
-import com.app.delicare.dtos.UserDTO;
-import com.app.delicare.repositories.*;
+import com.app.delicare.dtos.user.UserDTO;
+import com.app.delicare.repositories.user.UserRepository;
 import com.app.delicare.specification.UserSpecification;
-import com.app.delicare.responses.UserResponse;
+import com.app.delicare.responses.user.UserResponse;
 import com.app.delicare.service.implement.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

@@ -1,14 +1,13 @@
 package com.app.delicare.service;
 
-import com.app.delicare.common.enums.ESpecification;
-import com.app.delicare.entitys.Department;
-import com.app.delicare.entitys.User;
+import com.app.delicare.entitys.category.Department;
+import com.app.delicare.entitys.user.User;
 import com.app.delicare.mappers.DepartmentMapper;
-import com.app.delicare.dtos.DepartmentDTO;
-import com.app.delicare.repositories.DepartmentRepository;
-import com.app.delicare.repositories.UserRepository;
+import com.app.delicare.dtos.category.DepartmentDTO;
+import com.app.delicare.repositories.category.DepartmentRepository;
+import com.app.delicare.repositories.user.UserRepository;
 import com.app.delicare.specification.DepartmentSpecification;
-import com.app.delicare.responses.DepartmentResponse;
+import com.app.delicare.responses.category.DepartmentResponse;
 import com.app.delicare.service.implement.IDepartmentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

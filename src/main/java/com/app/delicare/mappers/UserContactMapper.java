@@ -1,11 +1,12 @@
 package com.app.delicare.mappers;
 
 import com.app.delicare.component.CommonUtils;
-import com.app.delicare.dtos.UserContactDTO;
-import com.app.delicare.entitys.*;
+import com.app.delicare.dtos.user.UserContactDTO;
+import com.app.delicare.entitys.user.User;
+import com.app.delicare.entitys.user.UserContact;
 import com.app.delicare.mappers.base.BaseMapper;
-import com.app.delicare.repositories.UserRepository;
-import com.app.delicare.responses.UserContactResponse;
+import com.app.delicare.repositories.user.UserRepository;
+import com.app.delicare.responses.user.UserContactResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

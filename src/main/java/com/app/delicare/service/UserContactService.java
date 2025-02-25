@@ -1,13 +1,13 @@
 package com.app.delicare.service;
 
 import com.app.delicare.common.enums.ESpecification;
-import com.app.delicare.dtos.UserContactDTO;
-import com.app.delicare.entitys.User;
-import com.app.delicare.entitys.UserContact;
+import com.app.delicare.dtos.user.UserContactDTO;
+import com.app.delicare.entitys.user.User;
+import com.app.delicare.entitys.user.UserContact;
 import com.app.delicare.mappers.UserContactMapper;
-import com.app.delicare.repositories.UserContactRepository;
-import com.app.delicare.repositories.UserRepository;
-import com.app.delicare.responses.UserContactResponse;
+import com.app.delicare.repositories.user.UserContactRepository;
+import com.app.delicare.repositories.user.UserRepository;
+import com.app.delicare.responses.user.UserContactResponse;
 import com.app.delicare.service.implement.IUserContactService;
 import com.app.delicare.specification.UserContactSpecification;
 import lombok.RequiredArgsConstructor;

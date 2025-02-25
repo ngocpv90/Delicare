@@ -1,12 +1,12 @@
 package com.app.delicare.service;
 
-import com.app.delicare.dtos.StageDTO;
-import com.app.delicare.entitys.Stage;
-import com.app.delicare.entitys.User;
+import com.app.delicare.dtos.category.StageDTO;
+import com.app.delicare.entitys.category.Stage;
+import com.app.delicare.entitys.user.User;
 import com.app.delicare.mappers.StageMapper;
-import com.app.delicare.repositories.StageRepository;
-import com.app.delicare.repositories.UserRepository;
-import com.app.delicare.responses.StageResponse;
+import com.app.delicare.repositories.category.StageRepository;
+import com.app.delicare.repositories.user.UserRepository;
+import com.app.delicare.responses.category.StageResponse;
 import com.app.delicare.service.implement.IStageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

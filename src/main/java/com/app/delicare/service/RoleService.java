@@ -1,11 +1,11 @@
 package com.app.delicare.service;
 
-import com.app.delicare.entitys.Role;
-import com.app.delicare.dtos.RoleDTO;
-import com.app.delicare.entitys.User;
+import com.app.delicare.entitys.category.Role;
+import com.app.delicare.dtos.category.RoleDTO;
+import com.app.delicare.entitys.user.User;
 import com.app.delicare.mappers.RoleMapper;
-import com.app.delicare.repositories.RoleRepository;
-import com.app.delicare.repositories.UserRepository;
+import com.app.delicare.repositories.category.RoleRepository;
+import com.app.delicare.repositories.user.UserRepository;
 import com.app.delicare.responses.RoleResponse;
 import com.app.delicare.service.implement.IRoleService;
 import lombok.RequiredArgsConstructor;

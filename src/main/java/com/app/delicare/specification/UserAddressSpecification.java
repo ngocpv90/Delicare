@@ -2,8 +2,7 @@ package com.app.delicare.specification;
 
 import com.app.delicare.common.enums.ECommon;
 import com.app.delicare.common.enums.ESpecification;
-import com.app.delicare.entitys.UserAddress;
-import com.app.delicare.entitys.UserContact;
+import com.app.delicare.entitys.user.UserAddress;
 import com.app.delicare.specification.base.BaseSpecification;
 import org.springframework.data.jpa.domain.Specification;
 

@@ -1,10 +1,10 @@
 package com.app.delicare.mappers;
 
-import com.app.delicare.dtos.PaymentDTO;
-import com.app.delicare.entitys.Payment;
+import com.app.delicare.dtos.category.PaymentDTO;
+import com.app.delicare.entitys.category.Payment;
 import com.app.delicare.mappers.base.BaseMapper;
-import com.app.delicare.repositories.UserRepository;
-import com.app.delicare.responses.PaymentResponse;
+import com.app.delicare.repositories.user.UserRepository;
+import com.app.delicare.responses.category.PaymentResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
