@@ -1,13 +1,13 @@
-package com.app.delicare.controllers;
+package com.app.delicare.controllers.category;
 
 import com.app.delicare.common.enums.EAction;
 import com.app.delicare.common.enums.EFunction;
 import com.app.delicare.component.MessageUtils;
-import com.app.delicare.dtos.menu.MenuDayDTO;
-import com.app.delicare.responses.menu.MenuDayResponse;
-import com.app.delicare.responses.user.UserResponse;
+import com.app.delicare.dtos.category.PaymentDTO;
 import com.app.delicare.responses.base.SystemResponse;
-import com.app.delicare.service.MenuDayService;
+import com.app.delicare.responses.category.PaymentResponse;
+import com.app.delicare.responses.user.UserResponse;
+import com.app.delicare.service.PaymentService;
 import com.app.delicare.service.common.CommonService;
 import com.app.delicare.utils.MessageString;
 import com.app.delicare.utils.WebUtils;
@@ -25,20 +25,19 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("${api.prefix}/orderDay")
-public class MenuDayController {
-    private final MenuDayService menuDayService;
+@RequestMapping("${api.prefix}/payments")
+public class PaymentController {
     private final CommonService commonService;
     private final MessageUtils messageUtils;
+    private final PaymentService paymentService;
 
     @GetMapping("/listPage")
-    public ResponseEntity<?> getListPageMenuDay(
+    public ResponseEntity<?> getListPagePayment(
             @RequestParam("page") int page,
-            @RequestParam("limit") int limit,
-            @RequestBody MenuDayDTO menuDayDTO
-            ){
+            @RequestParam("limit") int limit
+    ){
         try {
-            if(!commonService.hasAccessPermission("", EFunction.MENU_DAY.getValue(), EAction.READ.getValue())){
+            if(!commonService.hasAccessPermission("", EFunction.PAYMENT.getValue(), EAction.READ.getValue())){
                 return ResponseEntity.badRequest().body(SystemResponse.builder()
                         .message(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION))
                         .build());
@@ -47,11 +46,11 @@ public class MenuDayController {
             PageRequest pageRequest = PageRequest.of(
                     page, limit,
                     Sort.by("createdAt").descending());
-            Page<MenuDayResponse> menuDayResponses = menuDayService.getListMenuDay(pageRequest, menuDayDTO);
+            Page<PaymentResponse> paymentResponses = paymentService.getListPayment(pageRequest);
             return ResponseEntity.ok(SystemResponse.builder()
-                    .data(menuDayResponses.getContent())
-                    .totalRow(menuDayResponses.getTotalElements())
-                    .totalPages(menuDayResponses.getTotalPages())
+                    .data(paymentResponses.getContent())
+                    .totalRow(paymentResponses.getTotalElements())
+                    .totalPages(paymentResponses.getTotalPages())
                     .build());
         }catch (Exception e){
             return ResponseEntity.badRequest()
@@ -60,19 +59,19 @@ public class MenuDayController {
     }
 
     @GetMapping("/listAll")
-    public ResponseEntity<?> getListAllMenuDay(@RequestBody MenuDayDTO menuDayDTO){
+    public ResponseEntity<?> getListAllPayment(@RequestBody PaymentDTO paymentDTO){
         try {
-            if(!commonService.hasAccessPermission("", EFunction.MENU_DAY.getValue(), EAction.READ.getValue())){
+            if(!commonService.hasAccessPermission("", EFunction.PAYMENT.getValue(), EAction.READ.getValue())){
                 return ResponseEntity.badRequest().body(SystemResponse.builder()
                         .message(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION))
                         .build());
             }
 
-            List<MenuDayResponse> menuDayResponses = menuDayService.getAllMenuDay(menuDayDTO);
+            List<PaymentResponse> paymentResponses = paymentService.getAllPayment();
             return ResponseEntity.ok(SystemResponse.builder()
-                    .data(menuDayResponses)
-                    .totalRow(menuDayResponses.stream().count())
-                    .totalPages(1)
+                    .data(paymentResponses)
+                    .totalRow(paymentResponses.stream().count())
+                    .totalPages(0)
                     .build());
         }catch (Exception e){
             return ResponseEntity.badRequest()
@@ -81,22 +80,22 @@ public class MenuDayController {
     }
 
     @GetMapping("/detail/{id}")
-    public ResponseEntity<?> getMenuDayById(@PathVariable Long id){
+    public ResponseEntity<?> getPaymentById(@PathVariable Long id){
         try {
-            if(!commonService.hasAccessPermission("", EFunction.MENU_DAY.getValue(), EAction.READ.getValue())){
+            if(!commonService.hasAccessPermission("", EFunction.PAYMENT.getValue(), EAction.READ.getValue())){
                 return ResponseEntity.badRequest().body(SystemResponse.builder()
                         .message(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION))
                         .build());
             }
-            return ResponseEntity.ok(menuDayService.getMenuDayById(id));
+            return ResponseEntity.ok(paymentService.getPaymentById(id));
         } catch (Exception e){
             return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_DATA_NOT_FOUND));
         }
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> createMenuDay(
-            @Valid @RequestBody MenuDayDTO menuDayDTO,
+    public ResponseEntity<?> createPayment(
+            @Valid @RequestBody PaymentDTO paymentDTO,
             BindingResult result
     ){
         try{
@@ -108,7 +107,7 @@ public class MenuDayController {
                 return ResponseEntity.badRequest().body(errorMessage);
             }
 
-            if(!commonService.hasAccessPermission("", EFunction.MENU_DAY.getValue(), EAction.CREATE.getValue())){
+            if(!commonService.hasAccessPermission("", EFunction.PAYMENT.getValue(), EAction.CREATE.getValue())){
                 return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION));
             }
 
@@ -116,11 +115,11 @@ public class MenuDayController {
             if(userAuthentication == null){
                 return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION));
             }
-            menuDayDTO.setCreatedById(userAuthentication.getId());
-            MenuDayResponse menuDayResponse = menuDayService.createMenuDay(menuDayDTO);
+            paymentDTO.setCreatedById(userAuthentication.getId());
+            PaymentResponse paymentResponse = paymentService.createPayment(paymentDTO);
             return ResponseEntity.ok(SystemResponse.builder()
                     .message(messageUtils.getLocalizationMessage(MessageString.DEPARTMENT_CREATE_SUCCESSFULLY))
-                    .id(menuDayResponse.getId())
+                    .id(paymentResponse.getId())
                     .build()
             );
         } catch(Exception e){
@@ -129,9 +128,9 @@ public class MenuDayController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> updateMenuDay(@PathVariable Long id, MenuDayDTO menuDayDTO){
+    public ResponseEntity<?> updatePayment(@PathVariable Long id, PaymentDTO paymentDTO){
         try {
-            if(commonService.hasAccessPermission("", EFunction.MENU_DAY.getValue(), EAction.UPDATE.getValue())){
+            if(commonService.hasAccessPermission("", EFunction.PAYMENT.getValue(), EAction.UPDATE.getValue())){
                 return ResponseEntity.badRequest().body(SystemResponse.builder()
                         .message(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION))
                         .build());
@@ -141,9 +140,9 @@ public class MenuDayController {
             if(userAuthentication == null){
                 return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION));
             }
-            menuDayDTO.setModifiedById(userAuthentication.getId());
+            paymentDTO.setModifiedById(userAuthentication.getId());
 
-            menuDayService.updateMenuDay(id, menuDayDTO);
+            paymentService.updatePayment(id, paymentDTO);
             return ResponseEntity.ok(messageUtils.getLocalizationMessage(MessageString.SYSTEM_UPDATE_SUCCESSFULLY));
         } catch (Exception e){
             return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_UPDATE_FAILED));
@@ -151,15 +150,13 @@ public class MenuDayController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteMenuDay(@PathVariable Long id){
+    public ResponseEntity<String> deletePayment(@PathVariable Long id){
         try{
-            menuDayService.deleteMenuDay(id);
+            paymentService.deletePayment(id);
             return ResponseEntity.ok(messageUtils.getLocalizationMessage(MessageString.SYSTEM_DELETE_SUCCESSFULLY));
         } catch (Exception e){
             return ResponseEntity.badRequest()
                     .body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_UPDATE_FAILED));
         }
     }
-
-
 }

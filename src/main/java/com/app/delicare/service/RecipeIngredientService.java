@@ -24,19 +24,6 @@ public class RecipeIngredientService implements IRecipeIngredientService {
     private final RecipeIngredientMapper recipeIngredientMapper;
 
     @Override
-    public void saveAll(List<RecipeIngredientDTO> recipeIngredientDTOList) {
-        try{
-//            if(CommonUtils.isNullOrEmpty(recipeImgredoemtsDTO) || CommonUtils.isNullOrEmpty(recipeImgredoemtsDTO.getIngredients()))
-//
-//            RecipeIngredient recipeIngredient = recipeIngredientMapper.mapEntityToModel(recipeIngredientDTO);
-//            recipeIngredientRepository.save(recipeIngredient);
-//            recipeIngredientRepository.flush();
-//            return recipeIngredientMapper.mapResponseToEntity(recipeIngredient);
-        } catch (Exception e){
-        }
-    }
-
-    @Override
     public RecipeIngredientResponse createRecipe(RecipeIngredientDTO recipeIngredientDTO) {
         try{
             RecipeIngredient recipeIngredient = recipeIngredientMapper.mapEntityToModel(recipeIngredientDTO);

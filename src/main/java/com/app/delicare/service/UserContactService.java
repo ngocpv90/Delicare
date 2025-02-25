@@ -81,7 +81,8 @@ public class UserContactService implements IUserContactService {
     }
 
     @Override
-    public boolean existsByUserIdAndPhoneNumber(Long userId, String phoneNumber) {
-        return userContactRepository.existsByUserIdAndPhoneNumber(userId, phoneNumber);
+    public void deleteUserContactById(Long id) {
+
     }
+
 }

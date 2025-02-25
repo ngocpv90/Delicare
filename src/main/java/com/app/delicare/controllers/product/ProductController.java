@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("${api.prefix}/product")
 public class ProductController {
     private final CommonService commonService;
     private final MessageUtils messageUtils;

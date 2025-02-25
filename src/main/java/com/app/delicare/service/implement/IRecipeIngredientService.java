@@ -8,7 +8,6 @@ import org.springframework.data.domain.PageRequest;
 import java.util.List;
 
 public interface IRecipeIngredientService{
-    void saveAll(List<RecipeIngredientDTO> recipeIngredientDTOList);
     RecipeIngredientResponse createRecipe(RecipeIngredientDTO recipeIngredientDTO);
     List<RecipeIngredientResponse> getAllRecipe();
     Page<RecipeIngredientResponse> getListRecipe(PageRequest pageRequest);

@@ -1,13 +1,13 @@
-package com.app.delicare.controllers.product;
+package com.app.delicare.controllers.user;
 
 import com.app.delicare.common.enums.EAction;
 import com.app.delicare.common.enums.EFunction;
 import com.app.delicare.component.MessageUtils;
-import com.app.delicare.dtos.product.ProductImgDTO;
+import com.app.delicare.dtos.user.UserAddressDTO;
 import com.app.delicare.responses.base.SystemResponse;
-import com.app.delicare.responses.product.ProductImgResponse;
+import com.app.delicare.responses.user.UserAddressResponse;
 import com.app.delicare.responses.user.UserResponse;
-import com.app.delicare.service.ProductImgService;
+import com.app.delicare.service.UserAddressService;
 import com.app.delicare.service.common.CommonService;
 import com.app.delicare.utils.MessageString;
 import com.app.delicare.utils.WebUtils;
@@ -25,19 +25,19 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("${api.prefix}/productImg")
-public class ProductImgController {
+@RequestMapping("${api.prefix}/userAddress")
+public class UserAddressController {
     private final CommonService commonService;
     private final MessageUtils messageUtils;
-    private final ProductImgService productImgService;
+    private final UserAddressService userAddressService;
 
     @GetMapping("/listPage")
-    public ResponseEntity<?> getListPageProduct(
+    public ResponseEntity<?> getListPageUserAddress(
             @RequestParam("page") int page,
             @RequestParam("limit") int limit
     ){
         try {
-            if(!commonService.hasAccessPermission("", EFunction.PRODUCT_IMG.getValue(), EAction.READ.getValue())){
+            if(!commonService.hasAccessPermission("", EFunction.MENU.getValue(), EAction.READ.getValue())){
                 return ResponseEntity.badRequest().body(SystemResponse.builder()
                         .message(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION))
                         .build());
@@ -46,11 +46,11 @@ public class ProductImgController {
             PageRequest pageRequest = PageRequest.of(
                     page, limit,
                     Sort.by("createdAt").descending());
-            Page<ProductImgResponse> productImgResponsePage = productImgService.getListProductImg(pageRequest);
+            Page<UserAddressResponse> userAddressResponses = userAddressService.getPageUserAddress(pageRequest);
             return ResponseEntity.ok(SystemResponse.builder()
-                    .data(productImgResponsePage.getContent())
-                    .totalRow(productImgResponsePage.getTotalElements())
-                    .totalPages(productImgResponsePage.getTotalPages())
+                    .data(userAddressResponses.getContent())
+                    .totalRow(userAddressResponses.getTotalElements())
+                    .totalPages(userAddressResponses.getTotalPages())
                     .build());
         }catch (Exception e){
             return ResponseEntity.badRequest()
@@ -59,18 +59,18 @@ public class ProductImgController {
     }
 
     @GetMapping("/listAll")
-    public ResponseEntity<?> getListAllProduct(@RequestBody ProductImgDTO productImgDT){
+    public ResponseEntity<?> getListAllUserAddress(@RequestBody UserAddressDTO userAddressDTO){
         try {
-            if(!commonService.hasAccessPermission("", EFunction.PRODUCT_IMG.getValue(), EAction.READ.getValue())){
+            if(!commonService.hasAccessPermission("", EFunction.MENU.getValue(), EAction.READ.getValue())){
                 return ResponseEntity.badRequest().body(SystemResponse.builder()
                         .message(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION))
                         .build());
             }
 
-            List<ProductImgResponse> productImgResponses = productImgService.getAllProductImg();
+            List<UserAddressResponse> userAddressResponses = userAddressService.getAllUserAddress();
             return ResponseEntity.ok(SystemResponse.builder()
-                    .data(productImgResponses)
-                    .totalRow(productImgResponses.stream().count())
+                    .data(userAddressResponses)
+                    .totalRow(userAddressResponses.stream().count())
                     .totalPages(0)
                     .build());
         }catch (Exception e){
@@ -80,22 +80,22 @@ public class ProductImgController {
     }
 
     @GetMapping("/detail/{id}")
-    public ResponseEntity<?> getProductById(@PathVariable Long id){
+    public ResponseEntity<?> getUserAddressById(@PathVariable Long id){
         try {
-            if(!commonService.hasAccessPermission("", EFunction.PRODUCT_IMG.getValue(), EAction.READ.getValue())){
+            if(!commonService.hasAccessPermission("", EFunction.MENU.getValue(), EAction.READ.getValue())){
                 return ResponseEntity.badRequest().body(SystemResponse.builder()
                         .message(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION))
                         .build());
             }
-            return ResponseEntity.ok(productImgService.getProductImgById(id));
+            return ResponseEntity.ok(userAddressService.getUserAddressById(id));
         } catch (Exception e){
             return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_DATA_NOT_FOUND));
         }
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> createProduct(
-            @Valid @RequestBody ProductImgDTO productImgDTO,
+    public ResponseEntity<?> createUserAddress(
+            @Valid @RequestBody UserAddressDTO userAddressDTO,
             BindingResult result
     ){
         try{
@@ -107,7 +107,7 @@ public class ProductImgController {
                 return ResponseEntity.badRequest().body(errorMessage);
             }
 
-            if(!commonService.hasAccessPermission("", EFunction.PRODUCT_IMG.getValue(), EAction.CREATE.getValue())){
+            if(!commonService.hasAccessPermission("", EFunction.MENU.getValue(), EAction.CREATE.getValue())){
                 return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION));
             }
 
@@ -115,11 +115,11 @@ public class ProductImgController {
             if(userAuthentication == null){
                 return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION));
             }
-            productImgDTO.setCreatedById(userAuthentication.getId());
-            ProductImgResponse productImgResponse = productImgService.createProductImg(productImgDTO);
+            userAddressDTO.setCreatedById(userAuthentication.getId());
+            UserAddressResponse userAddressResponse = userAddressService.createUserAddress(userAddressDTO);
             return ResponseEntity.ok(SystemResponse.builder()
                     .message(messageUtils.getLocalizationMessage(MessageString.DEPARTMENT_CREATE_SUCCESSFULLY))
-                    .id(productImgResponse.getId())
+                    .id(userAddressResponse.getId())
                     .build()
             );
         } catch(Exception e){
@@ -128,9 +128,9 @@ public class ProductImgController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> updateProduct(@PathVariable Long id, ProductImgDTO productImgDT){
+    public ResponseEntity<?> updateUserAddress(@PathVariable Long id, UserAddressDTO userAddressDTO){
         try {
-            if(commonService.hasAccessPermission("", EFunction.PRODUCT_IMG.getValue(), EAction.UPDATE.getValue())){
+            if(commonService.hasAccessPermission("", EFunction.MENU.getValue(), EAction.UPDATE.getValue())){
                 return ResponseEntity.badRequest().body(SystemResponse.builder()
                         .message(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION))
                         .build());
@@ -140,9 +140,9 @@ public class ProductImgController {
             if(userAuthentication == null){
                 return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION));
             }
-            productImgDT.setModifiedById(userAuthentication.getId());
+            userAddressDTO.setModifiedById(userAuthentication.getId());
 
-            productImgService.updateProductImg(id, productImgDT);
+            userAddressService.updateUserAddress(id, userAddressDTO);
             return ResponseEntity.ok(messageUtils.getLocalizationMessage(MessageString.SYSTEM_UPDATE_SUCCESSFULLY));
         } catch (Exception e){
             return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_UPDATE_FAILED));
@@ -150,9 +150,9 @@ public class ProductImgController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteProduct(@PathVariable Long id){
+    public ResponseEntity<String> deleteUserAddress(@PathVariable Long id){
         try{
-            productImgService.deleteProductImg(id);
+            userAddressService.deleteUserAddressById(id);
             return ResponseEntity.ok(messageUtils.getLocalizationMessage(MessageString.SYSTEM_DELETE_SUCCESSFULLY));
         } catch (Exception e){
             return ResponseEntity.badRequest()

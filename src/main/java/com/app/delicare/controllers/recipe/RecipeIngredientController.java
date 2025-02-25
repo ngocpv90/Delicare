@@ -7,7 +7,6 @@ import com.app.delicare.dtos.recipe.RecipeDTO;
 import com.app.delicare.dtos.recipe.RecipeIngredientDTO;
 import com.app.delicare.responses.base.SystemResponse;
 import com.app.delicare.responses.recipe.RecipeIngredientResponse;
-import com.app.delicare.responses.recipe.RecipeResponse;
 import com.app.delicare.responses.user.UserResponse;
 import com.app.delicare.service.RecipeIngredientService;
 import com.app.delicare.service.common.CommonService;
@@ -27,6 +26,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("${api.prefix}/recipeIngredient")
 public class RecipeIngredientController {
     private final CommonService commonService;
     private final MessageUtils messageUtils;
@@ -60,7 +60,7 @@ public class RecipeIngredientController {
     }
 
     @GetMapping("/listAll")
-    public ResponseEntity<?> getListAllRecipeIngredient(@RequestBody RecipeDTO recipeDTO){
+    public ResponseEntity<?> getListAllRecipeIngredient(){
         try {
             if(!commonService.hasAccessPermission("", EFunction.RECIPE_INGREDIENT.getValue(), EAction.READ.getValue())){
                 return ResponseEntity.badRequest().body(SystemResponse.builder()
@@ -97,7 +97,6 @@ public class RecipeIngredientController {
     @PostMapping("/create")
     public ResponseEntity<?> createRecipeIngredient(
             @Valid @RequestBody RecipeIngredientDTO recipeIngredientDTO,
-            //@RequestBody RecipeImgredientsDTO recipeImgredoemtsDTO,
             BindingResult result
     ){
         try{

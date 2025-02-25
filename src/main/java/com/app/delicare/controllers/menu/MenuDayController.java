@@ -1,13 +1,13 @@
-package com.app.delicare.controllers.product;
+package com.app.delicare.controllers.menu;
 
 import com.app.delicare.common.enums.EAction;
 import com.app.delicare.common.enums.EFunction;
 import com.app.delicare.component.MessageUtils;
-import com.app.delicare.dtos.product.ProductImgDTO;
-import com.app.delicare.responses.base.SystemResponse;
-import com.app.delicare.responses.product.ProductImgResponse;
+import com.app.delicare.dtos.menu.MenuDayDTO;
+import com.app.delicare.responses.menu.MenuDayResponse;
 import com.app.delicare.responses.user.UserResponse;
-import com.app.delicare.service.ProductImgService;
+import com.app.delicare.responses.base.SystemResponse;
+import com.app.delicare.service.MenuDayService;
 import com.app.delicare.service.common.CommonService;
 import com.app.delicare.utils.MessageString;
 import com.app.delicare.utils.WebUtils;
@@ -25,19 +25,20 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("${api.prefix}/productImg")
-public class ProductImgController {
+@RequestMapping("${api.prefix}/orderDay")
+public class MenuDayController {
+    private final MenuDayService menuDayService;
     private final CommonService commonService;
     private final MessageUtils messageUtils;
-    private final ProductImgService productImgService;
 
     @GetMapping("/listPage")
-    public ResponseEntity<?> getListPageProduct(
+    public ResponseEntity<?> getListPageMenuDay(
             @RequestParam("page") int page,
-            @RequestParam("limit") int limit
-    ){
+            @RequestParam("limit") int limit,
+            @RequestBody MenuDayDTO menuDayDTO
+            ){
         try {
-            if(!commonService.hasAccessPermission("", EFunction.PRODUCT_IMG.getValue(), EAction.READ.getValue())){
+            if(!commonService.hasAccessPermission("", EFunction.MENU_DAY.getValue(), EAction.READ.getValue())){
                 return ResponseEntity.badRequest().body(SystemResponse.builder()
                         .message(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION))
                         .build());
@@ -46,11 +47,11 @@ public class ProductImgController {
             PageRequest pageRequest = PageRequest.of(
                     page, limit,
                     Sort.by("createdAt").descending());
-            Page<ProductImgResponse> productImgResponsePage = productImgService.getListProductImg(pageRequest);
+            Page<MenuDayResponse> menuDayResponses = menuDayService.getListMenuDay(pageRequest, menuDayDTO);
             return ResponseEntity.ok(SystemResponse.builder()
-                    .data(productImgResponsePage.getContent())
-                    .totalRow(productImgResponsePage.getTotalElements())
-                    .totalPages(productImgResponsePage.getTotalPages())
+                    .data(menuDayResponses.getContent())
+                    .totalRow(menuDayResponses.getTotalElements())
+                    .totalPages(menuDayResponses.getTotalPages())
                     .build());
         }catch (Exception e){
             return ResponseEntity.badRequest()
@@ -59,19 +60,19 @@ public class ProductImgController {
     }
 
     @GetMapping("/listAll")
-    public ResponseEntity<?> getListAllProduct(@RequestBody ProductImgDTO productImgDT){
+    public ResponseEntity<?> getListAllMenuDay(@RequestBody MenuDayDTO menuDayDTO){
         try {
-            if(!commonService.hasAccessPermission("", EFunction.PRODUCT_IMG.getValue(), EAction.READ.getValue())){
+            if(!commonService.hasAccessPermission("", EFunction.MENU_DAY.getValue(), EAction.READ.getValue())){
                 return ResponseEntity.badRequest().body(SystemResponse.builder()
                         .message(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION))
                         .build());
             }
 
-            List<ProductImgResponse> productImgResponses = productImgService.getAllProductImg();
+            List<MenuDayResponse> menuDayResponses = menuDayService.getAllMenuDay(menuDayDTO);
             return ResponseEntity.ok(SystemResponse.builder()
-                    .data(productImgResponses)
-                    .totalRow(productImgResponses.stream().count())
-                    .totalPages(0)
+                    .data(menuDayResponses)
+                    .totalRow(menuDayResponses.stream().count())
+                    .totalPages(1)
                     .build());
         }catch (Exception e){
             return ResponseEntity.badRequest()
@@ -80,22 +81,22 @@ public class ProductImgController {
     }
 
     @GetMapping("/detail/{id}")
-    public ResponseEntity<?> getProductById(@PathVariable Long id){
+    public ResponseEntity<?> getMenuDayById(@PathVariable Long id){
         try {
-            if(!commonService.hasAccessPermission("", EFunction.PRODUCT_IMG.getValue(), EAction.READ.getValue())){
+            if(!commonService.hasAccessPermission("", EFunction.MENU_DAY.getValue(), EAction.READ.getValue())){
                 return ResponseEntity.badRequest().body(SystemResponse.builder()
                         .message(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION))
                         .build());
             }
-            return ResponseEntity.ok(productImgService.getProductImgById(id));
+            return ResponseEntity.ok(menuDayService.getMenuDayById(id));
         } catch (Exception e){
             return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_DATA_NOT_FOUND));
         }
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> createProduct(
-            @Valid @RequestBody ProductImgDTO productImgDTO,
+    public ResponseEntity<?> createMenuDay(
+            @Valid @RequestBody MenuDayDTO menuDayDTO,
             BindingResult result
     ){
         try{
@@ -107,7 +108,7 @@ public class ProductImgController {
                 return ResponseEntity.badRequest().body(errorMessage);
             }
 
-            if(!commonService.hasAccessPermission("", EFunction.PRODUCT_IMG.getValue(), EAction.CREATE.getValue())){
+            if(!commonService.hasAccessPermission("", EFunction.MENU_DAY.getValue(), EAction.CREATE.getValue())){
                 return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION));
             }
 
@@ -115,11 +116,11 @@ public class ProductImgController {
             if(userAuthentication == null){
                 return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION));
             }
-            productImgDTO.setCreatedById(userAuthentication.getId());
-            ProductImgResponse productImgResponse = productImgService.createProductImg(productImgDTO);
+            menuDayDTO.setCreatedById(userAuthentication.getId());
+            MenuDayResponse menuDayResponse = menuDayService.createMenuDay(menuDayDTO);
             return ResponseEntity.ok(SystemResponse.builder()
                     .message(messageUtils.getLocalizationMessage(MessageString.DEPARTMENT_CREATE_SUCCESSFULLY))
-                    .id(productImgResponse.getId())
+                    .id(menuDayResponse.getId())
                     .build()
             );
         } catch(Exception e){
@@ -128,9 +129,9 @@ public class ProductImgController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> updateProduct(@PathVariable Long id, ProductImgDTO productImgDT){
+    public ResponseEntity<?> updateMenuDay(@PathVariable Long id, MenuDayDTO menuDayDTO){
         try {
-            if(commonService.hasAccessPermission("", EFunction.PRODUCT_IMG.getValue(), EAction.UPDATE.getValue())){
+            if(commonService.hasAccessPermission("", EFunction.MENU_DAY.getValue(), EAction.UPDATE.getValue())){
                 return ResponseEntity.badRequest().body(SystemResponse.builder()
                         .message(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION))
                         .build());
@@ -140,9 +141,9 @@ public class ProductImgController {
             if(userAuthentication == null){
                 return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION));
             }
-            productImgDT.setModifiedById(userAuthentication.getId());
+            menuDayDTO.setModifiedById(userAuthentication.getId());
 
-            productImgService.updateProductImg(id, productImgDT);
+            menuDayService.updateMenuDay(id, menuDayDTO);
             return ResponseEntity.ok(messageUtils.getLocalizationMessage(MessageString.SYSTEM_UPDATE_SUCCESSFULLY));
         } catch (Exception e){
             return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_UPDATE_FAILED));
@@ -150,13 +151,15 @@ public class ProductImgController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteProduct(@PathVariable Long id){
+    public ResponseEntity<String> deleteMenuDay(@PathVariable Long id){
         try{
-            productImgService.deleteProductImg(id);
+            menuDayService.deleteMenuDay(id);
             return ResponseEntity.ok(messageUtils.getLocalizationMessage(MessageString.SYSTEM_DELETE_SUCCESSFULLY));
         } catch (Exception e){
             return ResponseEntity.badRequest()
                     .body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_UPDATE_FAILED));
         }
     }
+
+
 }

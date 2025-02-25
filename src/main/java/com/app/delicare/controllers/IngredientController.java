@@ -25,8 +25,10 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("${api.prefix}/ingredients")
 public class IngredientController {
     private final CommonService commonService;
     private final MessageUtils messageUtils;

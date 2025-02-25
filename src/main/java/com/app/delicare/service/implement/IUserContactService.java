@@ -14,5 +14,5 @@ public interface IUserContactService {
     UserContactResponse getUserConactById(Long id);
     List<UserContactResponse> getUserContactByUserId(Long userId);
     UserContactResponse updateUserConact(Long id, UserContactDTO userContactDTO);
-    boolean existsByUserIdAndPhoneNumber(Long userId, String phoneNumber);
+    void deleteUserContactById(Long id);
 }

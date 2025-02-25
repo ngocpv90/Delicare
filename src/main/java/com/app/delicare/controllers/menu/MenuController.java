@@ -1,13 +1,14 @@
-package com.app.delicare.controllers.product;
+package com.app.delicare.controllers.menu;
 
 import com.app.delicare.common.enums.EAction;
 import com.app.delicare.common.enums.EFunction;
 import com.app.delicare.component.MessageUtils;
-import com.app.delicare.dtos.product.ProductImgDTO;
+import com.app.delicare.dtos.ingredient.IngredientDTO;
+import com.app.delicare.dtos.menu.MenuDTO;
 import com.app.delicare.responses.base.SystemResponse;
-import com.app.delicare.responses.product.ProductImgResponse;
+import com.app.delicare.responses.menu.MenuResponse;
 import com.app.delicare.responses.user.UserResponse;
-import com.app.delicare.service.ProductImgService;
+import com.app.delicare.service.MenuService;
 import com.app.delicare.service.common.CommonService;
 import com.app.delicare.utils.MessageString;
 import com.app.delicare.utils.WebUtils;
@@ -25,19 +26,19 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("${api.prefix}/productImg")
-public class ProductImgController {
+@RequestMapping("${api.prefix}/menus")
+public class MenuController {
     private final CommonService commonService;
     private final MessageUtils messageUtils;
-    private final ProductImgService productImgService;
+    private final MenuService menuService;
 
     @GetMapping("/listPage")
-    public ResponseEntity<?> getListPageProduct(
+    public ResponseEntity<?> getListPageMenu(
             @RequestParam("page") int page,
             @RequestParam("limit") int limit
     ){
         try {
-            if(!commonService.hasAccessPermission("", EFunction.PRODUCT_IMG.getValue(), EAction.READ.getValue())){
+            if(!commonService.hasAccessPermission("", EFunction.MENU.getValue(), EAction.READ.getValue())){
                 return ResponseEntity.badRequest().body(SystemResponse.builder()
                         .message(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION))
                         .build());
@@ -46,11 +47,11 @@ public class ProductImgController {
             PageRequest pageRequest = PageRequest.of(
                     page, limit,
                     Sort.by("createdAt").descending());
-            Page<ProductImgResponse> productImgResponsePage = productImgService.getListProductImg(pageRequest);
+            Page<MenuResponse> menuResponses = menuService.getListMenu(pageRequest);
             return ResponseEntity.ok(SystemResponse.builder()
-                    .data(productImgResponsePage.getContent())
-                    .totalRow(productImgResponsePage.getTotalElements())
-                    .totalPages(productImgResponsePage.getTotalPages())
+                    .data(menuResponses.getContent())
+                    .totalRow(menuResponses.getTotalElements())
+                    .totalPages(menuResponses.getTotalPages())
                     .build());
         }catch (Exception e){
             return ResponseEntity.badRequest()
@@ -59,18 +60,18 @@ public class ProductImgController {
     }
 
     @GetMapping("/listAll")
-    public ResponseEntity<?> getListAllProduct(@RequestBody ProductImgDTO productImgDT){
+    public ResponseEntity<?> getListAllMenu(@RequestBody IngredientDTO ingredientDTO){
         try {
-            if(!commonService.hasAccessPermission("", EFunction.PRODUCT_IMG.getValue(), EAction.READ.getValue())){
+            if(!commonService.hasAccessPermission("", EFunction.MENU.getValue(), EAction.READ.getValue())){
                 return ResponseEntity.badRequest().body(SystemResponse.builder()
                         .message(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION))
                         .build());
             }
 
-            List<ProductImgResponse> productImgResponses = productImgService.getAllProductImg();
+            List<MenuResponse> menuResponses = menuService.getAllMenu();
             return ResponseEntity.ok(SystemResponse.builder()
-                    .data(productImgResponses)
-                    .totalRow(productImgResponses.stream().count())
+                    .data(menuResponses)
+                    .totalRow(menuResponses.stream().count())
                     .totalPages(0)
                     .build());
         }catch (Exception e){
@@ -80,22 +81,22 @@ public class ProductImgController {
     }
 
     @GetMapping("/detail/{id}")
-    public ResponseEntity<?> getProductById(@PathVariable Long id){
+    public ResponseEntity<?> getMenuById(@PathVariable Long id){
         try {
-            if(!commonService.hasAccessPermission("", EFunction.PRODUCT_IMG.getValue(), EAction.READ.getValue())){
+            if(!commonService.hasAccessPermission("", EFunction.MENU.getValue(), EAction.READ.getValue())){
                 return ResponseEntity.badRequest().body(SystemResponse.builder()
                         .message(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION))
                         .build());
             }
-            return ResponseEntity.ok(productImgService.getProductImgById(id));
+            return ResponseEntity.ok(menuService.getMenuyId(id));
         } catch (Exception e){
             return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_DATA_NOT_FOUND));
         }
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> createProduct(
-            @Valid @RequestBody ProductImgDTO productImgDTO,
+    public ResponseEntity<?> createMenu(
+            @Valid @RequestBody MenuDTO menuDTO,
             BindingResult result
     ){
         try{
@@ -107,7 +108,7 @@ public class ProductImgController {
                 return ResponseEntity.badRequest().body(errorMessage);
             }
 
-            if(!commonService.hasAccessPermission("", EFunction.PRODUCT_IMG.getValue(), EAction.CREATE.getValue())){
+            if(!commonService.hasAccessPermission("", EFunction.MENU.getValue(), EAction.CREATE.getValue())){
                 return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION));
             }
 
@@ -115,11 +116,11 @@ public class ProductImgController {
             if(userAuthentication == null){
                 return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION));
             }
-            productImgDTO.setCreatedById(userAuthentication.getId());
-            ProductImgResponse productImgResponse = productImgService.createProductImg(productImgDTO);
+            menuDTO.setCreatedById(userAuthentication.getId());
+            MenuResponse menuResponse = menuService.createMenu(menuDTO);
             return ResponseEntity.ok(SystemResponse.builder()
                     .message(messageUtils.getLocalizationMessage(MessageString.DEPARTMENT_CREATE_SUCCESSFULLY))
-                    .id(productImgResponse.getId())
+                    .id(menuResponse.getId())
                     .build()
             );
         } catch(Exception e){
@@ -128,9 +129,9 @@ public class ProductImgController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> updateProduct(@PathVariable Long id, ProductImgDTO productImgDT){
+    public ResponseEntity<?> updateMenu(@PathVariable Long id, MenuDTO menuDTO){
         try {
-            if(commonService.hasAccessPermission("", EFunction.PRODUCT_IMG.getValue(), EAction.UPDATE.getValue())){
+            if(commonService.hasAccessPermission("", EFunction.MENU.getValue(), EAction.UPDATE.getValue())){
                 return ResponseEntity.badRequest().body(SystemResponse.builder()
                         .message(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION))
                         .build());
@@ -140,9 +141,9 @@ public class ProductImgController {
             if(userAuthentication == null){
                 return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION));
             }
-            productImgDT.setModifiedById(userAuthentication.getId());
+            menuDTO.setModifiedById(userAuthentication.getId());
 
-            productImgService.updateProductImg(id, productImgDT);
+            menuService.updateMenu(id, menuDTO);
             return ResponseEntity.ok(messageUtils.getLocalizationMessage(MessageString.SYSTEM_UPDATE_SUCCESSFULLY));
         } catch (Exception e){
             return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_UPDATE_FAILED));
@@ -150,9 +151,9 @@ public class ProductImgController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteProduct(@PathVariable Long id){
+    public ResponseEntity<String> deleteMenu(@PathVariable Long id){
         try{
-            productImgService.deleteProductImg(id);
+            menuService.deleteMenu(id);
             return ResponseEntity.ok(messageUtils.getLocalizationMessage(MessageString.SYSTEM_DELETE_SUCCESSFULLY));
         } catch (Exception e){
             return ResponseEntity.badRequest()

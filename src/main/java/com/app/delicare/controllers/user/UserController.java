@@ -1,4 +1,4 @@
-package com.app.delicare.controllers;
+package com.app.delicare.controllers.user;
 import com.app.delicare.common.enums.EAction;
 import com.app.delicare.common.enums.EFunction;
 import com.app.delicare.component.CommonUtils;
