@@ -20,9 +20,14 @@ public enum EFunction {
     PAYMENT("payments"),
     SHIPPING("shipping"),
     CATEGORY("category"),
-    ACTION("actions"),
-    FUNCTION("functions"),
+    ACTION("action"),
+    FUNCTION("function"),
     FUNCTION_ACTION("functionAction"),
+    PROVINCE("province"),
+    DISTRICT("district"),
+    WARD("ward"),
+    ROLE("role"),
+    ROLE_FUNCTION("roleFunction"),
     ;
 
 

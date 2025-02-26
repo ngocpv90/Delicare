@@ -7,7 +7,7 @@ import com.app.delicare.dtos.product.ProductImgDTO;
 import com.app.delicare.responses.base.SystemResponse;
 import com.app.delicare.responses.product.ProductImgResponse;
 import com.app.delicare.responses.user.UserResponse;
-import com.app.delicare.service.ProductImgService;
+import com.app.delicare.service.product.ProductImgService;
 import com.app.delicare.service.common.CommonService;
 import com.app.delicare.utils.MessageString;
 import com.app.delicare.utils.WebUtils;

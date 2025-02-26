@@ -8,7 +8,7 @@ import com.app.delicare.responses.base.OptionResponse;
 import com.app.delicare.responses.base.SystemResponse;
 import com.app.delicare.responses.category.DepartmentResponse;
 import com.app.delicare.responses.user.UserResponse;
-import com.app.delicare.service.*;
+import com.app.delicare.service.category.DepartmentService;
 import com.app.delicare.service.common.CommonService;
 import com.app.delicare.utils.MessageString;
 import com.app.delicare.utils.WebUtils;

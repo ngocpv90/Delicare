@@ -8,7 +8,7 @@ import com.app.delicare.dtos.menu.MenuDTO;
 import com.app.delicare.responses.base.SystemResponse;
 import com.app.delicare.responses.menu.MenuResponse;
 import com.app.delicare.responses.user.UserResponse;
-import com.app.delicare.service.MenuService;
+import com.app.delicare.service.menu.MenuService;
 import com.app.delicare.service.common.CommonService;
 import com.app.delicare.utils.MessageString;
 import com.app.delicare.utils.WebUtils;

@@ -13,7 +13,7 @@ import lombok.*;
 public class RoleFunction extends BaseEntity{
     @ManyToOne
     @JoinColumn(name = "FUNCTION_ID")
-    private Functions functions;
+    private Function functions;
     @ManyToOne
     @JoinColumn(name = "ROLE_ID")
     private Role role;

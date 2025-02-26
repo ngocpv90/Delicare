@@ -1,10 +1,9 @@
 package com.app.delicare.service.common;
 
 import com.app.delicare.entitys.user.User;
-import com.app.delicare.mappers.UserMapper;
+import com.app.delicare.mappers.user.UserMapper;
 import com.app.delicare.repositories.user.UserRepository;
 import com.app.delicare.responses.user.UserResponse;
-import com.app.delicare.service.implement.ICommonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;

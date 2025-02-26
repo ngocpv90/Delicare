@@ -7,7 +7,7 @@ import com.app.delicare.dtos.category.StageDTO;
 import com.app.delicare.responses.category.StageResponse;
 import com.app.delicare.responses.user.UserResponse;
 import com.app.delicare.responses.base.SystemResponse;
-import com.app.delicare.service.StageService;
+import com.app.delicare.service.category.StageService;
 import com.app.delicare.service.common.CommonService;
 import com.app.delicare.utils.MessageString;
 import com.app.delicare.utils.WebUtils;

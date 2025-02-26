@@ -7,7 +7,7 @@ import com.app.delicare.dtos.user.UserAddressDTO;
 import com.app.delicare.responses.base.SystemResponse;
 import com.app.delicare.responses.user.UserAddressResponse;
 import com.app.delicare.responses.user.UserResponse;
-import com.app.delicare.service.UserAddressService;
+import com.app.delicare.service.user.UserAddressService;
 import com.app.delicare.service.common.CommonService;
 import com.app.delicare.utils.MessageString;
 import com.app.delicare.utils.WebUtils;

@@ -7,7 +7,7 @@ import com.app.delicare.dtos.category.ShippingDTO;
 import com.app.delicare.responses.base.SystemResponse;
 import com.app.delicare.responses.category.ShippingResponse;
 import com.app.delicare.responses.user.UserResponse;
-import com.app.delicare.service.ShippingService;
+import com.app.delicare.service.category.ShippingService;
 import com.app.delicare.service.common.CommonService;
 import com.app.delicare.utils.MessageString;
 import com.app.delicare.utils.WebUtils;

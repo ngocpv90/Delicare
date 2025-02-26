@@ -16,6 +16,8 @@ public class ActionDTO extends BaseDTO{
     @NotEmpty(message = "name is not null")
     @JsonProperty("actionName")
     private String actionName;
-    @JsonProperty("functionId")
-    private Long functionId;
+    @JsonProperty("isDisplay")
+    private int isDisplay;
+    @JsonProperty("sort")
+    private Long sort;
 }

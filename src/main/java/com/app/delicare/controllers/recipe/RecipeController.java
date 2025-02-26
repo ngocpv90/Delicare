@@ -7,7 +7,7 @@ import com.app.delicare.dtos.recipe.RecipeDTO;
 import com.app.delicare.responses.base.SystemResponse;
 import com.app.delicare.responses.recipe.RecipeResponse;
 import com.app.delicare.responses.user.UserResponse;
-import com.app.delicare.service.RecipeService;
+import com.app.delicare.service.recipe.RecipeService;
 import com.app.delicare.service.common.CommonService;
 import com.app.delicare.utils.MessageString;
 import com.app.delicare.utils.WebUtils;

@@ -7,7 +7,7 @@ import com.app.delicare.dtos.menu.MenuDayDTO;
 import com.app.delicare.responses.menu.MenuDayResponse;
 import com.app.delicare.responses.user.UserResponse;
 import com.app.delicare.responses.base.SystemResponse;
-import com.app.delicare.service.MenuDayService;
+import com.app.delicare.service.menu.MenuDayService;
 import com.app.delicare.service.common.CommonService;
 import com.app.delicare.utils.MessageString;
 import com.app.delicare.utils.WebUtils;
@@ -25,7 +25,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("${api.prefix}/orderDay")
+@RequestMapping("${api.prefix}/menuDay")
 public class MenuDayController {
     private final MenuDayService menuDayService;
     private final CommonService commonService;
@@ -110,6 +110,10 @@ public class MenuDayController {
 
             if(!commonService.hasAccessPermission("", EFunction.MENU_DAY.getValue(), EAction.CREATE.getValue())){
                 return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION));
+            }
+
+            if(menuDayService.existsByMenuAndMenuDate(menuDayDTO.getMenuId(), menuDayDTO.getMenuDate())){
+                return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_DATA_EXISTS));
             }
 
             UserResponse userAuthentication = commonService.getUserLogin(WebUtils.getAuthentication());

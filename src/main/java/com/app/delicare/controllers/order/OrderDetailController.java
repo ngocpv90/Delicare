@@ -8,7 +8,7 @@ import com.app.delicare.dtos.order.OrderDetailDTO;
 import com.app.delicare.responses.base.SystemResponse;
 import com.app.delicare.responses.order.OrderDetailResponse;
 import com.app.delicare.responses.user.UserResponse;
-import com.app.delicare.service.OrderDetailService;
+import com.app.delicare.service.order.OrderDetailService;
 import com.app.delicare.service.common.CommonService;
 import com.app.delicare.utils.MessageString;
 import com.app.delicare.utils.WebUtils;
