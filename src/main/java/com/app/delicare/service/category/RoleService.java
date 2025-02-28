@@ -2,7 +2,7 @@ package com.app.delicare.service.category;
 
 import com.app.delicare.entitys.category.Role;
 import com.app.delicare.dtos.category.RoleDTO;
-import com.app.delicare.entitys.user.User;
+import com.app.delicare.entitys.users.User;
 import com.app.delicare.mappers.category.RoleMapper;
 import com.app.delicare.repositories.category.RoleRepository;
 import com.app.delicare.repositories.user.UserRepository;

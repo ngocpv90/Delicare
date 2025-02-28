@@ -8,12 +8,14 @@ import com.app.delicare.responses.category.DepartmentResponse;
 import com.app.delicare.responses.category.GroupResponse;
 import com.app.delicare.responses.category.TitleResponse;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
-@Builder
+//@Builder
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@SuperBuilder
 public class UserResponse extends BaseResponse {
     private Long id;
     private String userName;

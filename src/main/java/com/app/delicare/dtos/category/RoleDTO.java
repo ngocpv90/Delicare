@@ -4,7 +4,7 @@ import com.app.delicare.dtos.base.BaseDTO;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
-@Builder
+//@Builder
 @Getter
 @Setter
 @AllArgsConstructor

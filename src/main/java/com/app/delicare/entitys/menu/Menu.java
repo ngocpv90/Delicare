@@ -1,5 +1,5 @@
 package com.app.delicare.entitys.menu;
-import com.app.delicare.entitys.base.BaseEntity;
+import com.app.delicare.entitys.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,5 +20,13 @@ public class Menu extends BaseEntity{
     @Column(name = "ICON_PATH")
     private String iconPath;
     @Column(name = "SORT")
-    private Long menuSort;
+    private Long sort;
+    @Column(name = "SHORT_DESCRIPTION", length = 255)
+    private String shortDescription;
+    @Column(name = "SCORE")
+    private Long score;
+    @Column(name = "RATING_STAR")
+    private Long ratingStar;
+    @Column(name = "PRICE")
+    private Long price;
 }

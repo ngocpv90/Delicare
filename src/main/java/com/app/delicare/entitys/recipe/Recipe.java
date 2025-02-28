@@ -1,5 +1,5 @@
 package com.app.delicare.entitys.recipe;
-import com.app.delicare.entitys.base.BaseEntity;
+import com.app.delicare.entitys.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 

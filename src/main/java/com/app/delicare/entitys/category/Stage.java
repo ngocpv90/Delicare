@@ -1,5 +1,5 @@
 package com.app.delicare.entitys.category;
-import com.app.delicare.entitys.base.BaseEntity;
+import com.app.delicare.entitys.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

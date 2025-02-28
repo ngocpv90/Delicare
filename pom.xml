@@ -6,6 +6,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.3.5</version>
+<!--		<version>3.0.0</version>-->
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.app</groupId>
@@ -15,10 +16,17 @@
 	<description>Crm app for Spring Boot</description>
 	<url/>
 	<licenses>
-		<license/>
+		<license>
+			<name>Apache License 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
+		</license>
 	</licenses>
 	<developers>
-		<developer/>
+		<developer>
+			<id>developer-id</id>
+			<name>Developer Name</name>
+			<email>developer@example.com</email>
+		</developer>
 	</developers>
 	<scm>
 		<connection/>
@@ -61,6 +69,8 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
+			<version>1.18.30</version> <!-- Sử dụng phiên bản mới nhất -->
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -103,6 +113,11 @@
 			<artifactId>jjwt-api</artifactId>
 			<version>0.11.5</version>
 		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.mapstruct</groupId>-->
+<!--			<artifactId>mapstruct</artifactId>-->
+<!--			<version>1.5.3.Final</version> &lt;!&ndash; Use the latest version &ndash;&gt;-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>

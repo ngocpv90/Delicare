@@ -60,7 +60,7 @@ public class OrderDetailController {
     }
 
     @GetMapping("/listAll")
-    public ResponseEntity<?> getListAllOrderDetail(@RequestBody OrderDTO orderDTO){
+    public ResponseEntity<?> getListAllOrderDetail(){
         try {
             if(!commonService.hasAccessPermission("", EFunction.ORDER_DETAIL.getValue(), EAction.READ.getValue())){
                 return ResponseEntity.badRequest().body(SystemResponse.builder()

@@ -26,7 +26,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("${api.prefix}/orders")
+@RequestMapping("${api.prefix}/order")
 public class OrderController {
     private final CommonService commonService;
     private final MessageUtils messageUtils;

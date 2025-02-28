@@ -4,7 +4,7 @@ import com.app.delicare.common.enums.ESpecification;
 import com.app.delicare.entitys.category.Department;
 import com.app.delicare.entitys.category.Group;
 import com.app.delicare.dtos.category.GroupDTO;
-import com.app.delicare.entitys.user.User;
+import com.app.delicare.entitys.users.User;
 import com.app.delicare.mappers.category.GroupMapper;
 import com.app.delicare.repositories.category.DepartmentRepository;
 import com.app.delicare.repositories.category.GroupRepository;

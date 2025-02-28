@@ -1,5 +1,5 @@
-package com.app.delicare.entitys.user;
-import com.app.delicare.entitys.base.BaseEntity;
+package com.app.delicare.entitys.users;
+import com.app.delicare.entitys.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 

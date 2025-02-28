@@ -1,8 +1,6 @@
 package com.app.delicare.entitys.category;
 
-import com.app.delicare.entitys.base.BaseEntity;
-import com.app.delicare.entitys.ingredient.Ingredient;
-import com.app.delicare.entitys.recipe.Recipe;
+import com.app.delicare.entitys.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;

@@ -59,7 +59,7 @@ public class ProductImgController {
     }
 
     @GetMapping("/listAll")
-    public ResponseEntity<?> getListAllProduct(@RequestBody ProductImgDTO productImgDT){
+    public ResponseEntity<?> getListAllProduct(){
         try {
             if(!commonService.hasAccessPermission("", EFunction.PRODUCT_IMG.getValue(), EAction.READ.getValue())){
                 return ResponseEntity.badRequest().body(SystemResponse.builder()

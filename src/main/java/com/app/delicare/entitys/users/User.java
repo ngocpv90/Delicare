@@ -1,4 +1,4 @@
-package com.app.delicare.entitys.user;
+package com.app.delicare.entitys.users;
 
 import com.app.delicare.entitys.category.Department;
 import com.app.delicare.entitys.category.Group;
@@ -7,7 +7,7 @@ import com.app.delicare.entitys.category.Title;
 import com.app.delicare.entitys.address.District;
 import com.app.delicare.entitys.address.Province;
 import com.app.delicare.entitys.address.Ward;
-import com.app.delicare.entitys.base.BaseEntity;
+import com.app.delicare.entitys.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -79,6 +79,11 @@ public class User extends BaseEntity implements UserDetails {
     @Override
     public String getUsername() {
         return userName;
+    }
+
+    @Override
+    public String getPassword(){
+        return password;
     }
 
     @Override

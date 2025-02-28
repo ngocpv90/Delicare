@@ -25,7 +25,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("${api.prefix}/payments")
+@RequestMapping("${api.prefix}/payment")
 public class PaymentController {
     private final CommonService commonService;
     private final MessageUtils messageUtils;

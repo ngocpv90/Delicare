@@ -1,6 +1,6 @@
 package com.app.delicare.service.common;
 
-import com.app.delicare.entitys.user.User;
+import com.app.delicare.entitys.users.User;
 import com.app.delicare.mappers.user.UserMapper;
 import com.app.delicare.repositories.user.UserRepository;
 import com.app.delicare.responses.user.UserResponse;

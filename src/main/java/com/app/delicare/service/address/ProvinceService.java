@@ -2,14 +2,12 @@ package com.app.delicare.service.address;
 
 import com.app.delicare.entitys.address.Province;
 import com.app.delicare.dtos.address.ProvinceDTO;
-import com.app.delicare.entitys.category.Category;
-import com.app.delicare.entitys.user.User;
+import com.app.delicare.entitys.users.User;
 import com.app.delicare.mappers.address.ProvinceMapper;
 import com.app.delicare.repositories.address.ProvinceRepository;
 import com.app.delicare.repositories.user.UserRepository;
 import com.app.delicare.responses.address.ProvinceResponse;
 import com.app.delicare.specification.address.ProvinceSpecification;
-import com.app.delicare.specification.category.CategorySpecification;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

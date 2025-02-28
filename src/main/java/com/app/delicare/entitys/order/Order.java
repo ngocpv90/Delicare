@@ -1,11 +1,11 @@
 package com.app.delicare.entitys.order;
-import com.app.delicare.entitys.base.BaseEntity;
+import com.app.delicare.entitys.BaseEntity;
 import com.app.delicare.entitys.category.Category;
 import com.app.delicare.entitys.category.Payment;
 import com.app.delicare.entitys.category.Shipping;
 import com.app.delicare.entitys.category.Stage;
-import com.app.delicare.entitys.user.User;
-import com.app.delicare.entitys.user.UserAddress;
+import com.app.delicare.entitys.users.User;
+import com.app.delicare.entitys.users.UserAddress;
 import jakarta.persistence.*;
 import lombok.*;
 

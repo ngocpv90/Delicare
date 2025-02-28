@@ -3,7 +3,7 @@ import com.app.delicare.dtos.base.BaseDTO;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
-@Builder
+//@Builder
 @Getter
 @Setter
 @AllArgsConstructor

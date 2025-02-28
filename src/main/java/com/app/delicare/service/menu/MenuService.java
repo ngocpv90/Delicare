@@ -2,7 +2,7 @@ package com.app.delicare.service.menu;
 
 import com.app.delicare.dtos.menu.MenuDTO;
 import com.app.delicare.entitys.menu.Menu;
-import com.app.delicare.entitys.user.User;
+import com.app.delicare.entitys.users.User;
 import com.app.delicare.mappers.menu.MenuMapper;
 import com.app.delicare.repositories.menu.MenuRepository;
 import com.app.delicare.repositories.user.UserRepository;

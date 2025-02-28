@@ -2,7 +2,7 @@ package com.app.delicare.service.recipe;
 
 import com.app.delicare.dtos.recipe.RecipeDTO;
 import com.app.delicare.entitys.recipe.Recipe;
-import com.app.delicare.entitys.user.User;
+import com.app.delicare.entitys.users.User;
 import com.app.delicare.mappers.recipe.RecipeMapper;
 import com.app.delicare.repositories.ingredient.RecipeRepository;
 import com.app.delicare.repositories.user.UserRepository;

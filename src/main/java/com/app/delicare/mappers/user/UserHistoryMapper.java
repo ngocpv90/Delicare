@@ -1,8 +1,8 @@
 package com.app.delicare.mappers.user;
 import com.app.delicare.dtos.user.UserHistoryDTO;
 import com.app.delicare.dtos.user.UserDTO;
-import com.app.delicare.entitys.user.User;
-import com.app.delicare.entitys.user.UserHistory;
+import com.app.delicare.entitys.users.User;
+import com.app.delicare.entitys.users.UserHistory;
 import com.app.delicare.mappers.category.RoleMapper;
 import com.app.delicare.mappers.category.TitleMapper;
 import com.app.delicare.mappers.base.BaseMapper;

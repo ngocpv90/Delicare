@@ -1,5 +1,5 @@
 package com.app.delicare.component;
-import com.app.delicare.entitys.user.User;
+import com.app.delicare.entitys.users.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

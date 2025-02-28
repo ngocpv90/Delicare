@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
-@Builder
+//@Builder
 @Getter
 @Setter
 @AllArgsConstructor
@@ -20,6 +20,14 @@ public class MenuDTO extends BaseDTO{
     private String menuType;
     @JsonProperty("iconPath")
     private String iconPath;
-    @JsonProperty("menuSort")
-    private Long menuSort;
+    @JsonProperty("sort")
+    private Long sort;
+    @JsonProperty("shortDescription")
+    private String shortDescription;
+    @JsonProperty("score")
+    private Long score;
+    @JsonProperty("ratingStar")
+    private Long ratingStar;
+    @JsonProperty("price")
+    private Long price;
 }

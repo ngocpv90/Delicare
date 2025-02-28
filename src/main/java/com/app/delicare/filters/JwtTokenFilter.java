@@ -1,6 +1,6 @@
 package com.app.delicare.filters;
 import com.app.delicare.component.JwtTokenUtils;
-import com.app.delicare.entitys.user.User;
+import com.app.delicare.entitys.users.User;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

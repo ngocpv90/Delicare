@@ -6,7 +6,7 @@ import com.app.delicare.entitys.category.Department;
 import com.app.delicare.entitys.category.Group;
 import com.app.delicare.entitys.category.Role;
 import com.app.delicare.entitys.category.Title;
-import com.app.delicare.entitys.user.User;
+import com.app.delicare.entitys.users.User;
 import com.app.delicare.mappers.category.RoleMapper;
 import com.app.delicare.mappers.category.TitleMapper;
 import com.app.delicare.mappers.base.BaseMapper;

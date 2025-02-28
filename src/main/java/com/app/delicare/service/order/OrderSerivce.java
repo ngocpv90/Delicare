@@ -4,7 +4,7 @@ import com.app.delicare.component.CommonUtils;
 import com.app.delicare.dtos.order.OrderDTO;
 import com.app.delicare.dtos.order.OrderDetailsDTO;
 import com.app.delicare.entitys.order.Order;
-import com.app.delicare.entitys.user.User;
+import com.app.delicare.entitys.users.User;
 import com.app.delicare.mappers.order.OrderDetailMapper;
 import com.app.delicare.mappers.order.OrderMapper;
 import com.app.delicare.repositories.order.OrderDetailRepository;

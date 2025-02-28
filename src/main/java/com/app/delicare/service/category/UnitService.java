@@ -2,7 +2,7 @@ package com.app.delicare.service.category;
 
 import com.app.delicare.dtos.category.UnitDTO;
 import com.app.delicare.entitys.category.Units;
-import com.app.delicare.entitys.user.User;
+import com.app.delicare.entitys.users.User;
 import com.app.delicare.mappers.category.UnitMapper;
 import com.app.delicare.repositories.category.UnitRepository;
 import com.app.delicare.repositories.user.UserRepository;

@@ -25,6 +25,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("${api.prefix}/recipe")
 public class RecipeController {
     private final CommonService commonService;
     private final MessageUtils messageUtils;
@@ -58,7 +59,7 @@ public class RecipeController {
     }
 
     @GetMapping("/listAll")
-    public ResponseEntity<?> getListAllRecipe(@RequestBody RecipeDTO recipeDTO){
+    public ResponseEntity<?> getListAllRecipe(){
         try {
             if(!commonService.hasAccessPermission("", EFunction.RECIPE.getValue(), EAction.READ.getValue())){
                 return ResponseEntity.badRequest().body(SystemResponse.builder()

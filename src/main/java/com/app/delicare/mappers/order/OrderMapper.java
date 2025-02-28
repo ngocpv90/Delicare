@@ -7,7 +7,7 @@ import com.app.delicare.entitys.category.Payment;
 import com.app.delicare.entitys.category.Shipping;
 import com.app.delicare.entitys.category.Stage;
 import com.app.delicare.entitys.order.Order;
-import com.app.delicare.entitys.user.UserAddress;
+import com.app.delicare.entitys.users.UserAddress;
 import com.app.delicare.mappers.category.PaymentMapper;
 import com.app.delicare.mappers.category.ShippingMapper;
 import com.app.delicare.mappers.category.StageMapper;

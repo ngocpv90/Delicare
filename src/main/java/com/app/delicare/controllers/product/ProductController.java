@@ -58,7 +58,7 @@ public class ProductController {
     }
 
     @GetMapping("/listAll")
-    public ResponseEntity<?> getListAllProduct(@RequestBody ProductDTO productDTO){
+    public ResponseEntity<?> getListAllProduct(){
         try {
             if(!commonService.hasAccessPermission("", EFunction.PRODUCT.getValue(), EAction.READ.getValue())){
                 return ResponseEntity.badRequest().body(SystemResponse.builder()

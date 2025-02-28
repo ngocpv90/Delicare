@@ -1,8 +1,8 @@
 package com.app.delicare.service.user;
 import com.app.delicare.common.enums.ESpecification;
 import com.app.delicare.dtos.user.UserAddressDTO;
-import com.app.delicare.entitys.user.User;
-import com.app.delicare.entitys.user.UserAddress;
+import com.app.delicare.entitys.users.User;
+import com.app.delicare.entitys.users.UserAddress;
 import com.app.delicare.mappers.user.UserAddressMapper;
 import com.app.delicare.repositories.user.UserAddressRepository;
 import com.app.delicare.repositories.user.UserRepository;

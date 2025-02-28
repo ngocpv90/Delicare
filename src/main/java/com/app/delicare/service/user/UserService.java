@@ -2,7 +2,7 @@ package com.app.delicare.service.user;
 
 import com.app.delicare.component.CommonUtils;
 import com.app.delicare.component.JwtTokenUtils;
-import com.app.delicare.entitys.user.User;
+import com.app.delicare.entitys.users.User;
 import com.app.delicare.mappers.user.UserMapper;
 import com.app.delicare.dtos.user.UserDTO;
 import com.app.delicare.repositories.user.UserRepository;

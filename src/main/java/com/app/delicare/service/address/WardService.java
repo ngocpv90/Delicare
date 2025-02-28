@@ -1,17 +1,13 @@
 package com.app.delicare.service.address;
 
 import com.app.delicare.common.enums.ESpecification;
-import com.app.delicare.entitys.address.District;
-import com.app.delicare.entitys.address.Province;
-import com.app.delicare.entitys.user.User;
+import com.app.delicare.entitys.users.User;
 import com.app.delicare.entitys.address.Ward;
 import com.app.delicare.dtos.address.WardDTO;
 import com.app.delicare.mappers.address.WardMapper;
-import com.app.delicare.repositories.address.DistrictRepository;
 import com.app.delicare.repositories.user.UserRepository;
 import com.app.delicare.repositories.address.WardRepository;
 import com.app.delicare.responses.address.WardResponse;
-import com.app.delicare.specification.address.ProvinceSpecification;
 import com.app.delicare.specification.address.WardSpecification;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

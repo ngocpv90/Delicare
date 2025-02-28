@@ -1,6 +1,6 @@
 package com.app.delicare.entitys.order;
 import com.app.delicare.entitys.menu.Menu;
-import com.app.delicare.entitys.base.BaseEntity;
+import com.app.delicare.entitys.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 

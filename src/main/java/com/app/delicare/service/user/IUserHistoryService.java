@@ -1,7 +1,7 @@
 package com.app.delicare.service.user;
 
-import com.app.delicare.entitys.user.User;
-import com.app.delicare.entitys.user.UserHistory;
+import com.app.delicare.entitys.users.User;
+import com.app.delicare.entitys.users.UserHistory;
 import com.app.delicare.dtos.user.UserHistoryDTO;
 import com.app.delicare.responses.user.UserHistoryResponse;
 import org.springframework.data.domain.Page;

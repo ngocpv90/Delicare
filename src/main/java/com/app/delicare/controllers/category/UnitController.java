@@ -25,7 +25,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("${api.prefix}/units")
+@RequestMapping("${api.prefix}/unit")
 public class UnitController {
     private final CommonService commonService;
     private final MessageUtils messageUtils;

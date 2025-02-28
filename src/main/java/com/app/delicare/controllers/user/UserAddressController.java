@@ -59,7 +59,7 @@ public class UserAddressController {
     }
 
     @GetMapping("/listAll")
-    public ResponseEntity<?> getListAllUserAddress(@RequestBody UserAddressDTO userAddressDTO){
+    public ResponseEntity<?> getListAllUserAddress(){
         try {
             if(!commonService.hasAccessPermission("", EFunction.MENU.getValue(), EAction.READ.getValue())){
                 return ResponseEntity.badRequest().body(SystemResponse.builder()

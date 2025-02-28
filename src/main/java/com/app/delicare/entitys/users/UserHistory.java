@@ -1,4 +1,4 @@
-package com.app.delicare.entitys.user;
+package com.app.delicare.entitys.users;
 
 import com.app.delicare.entitys.category.Department;
 import com.app.delicare.entitys.category.Group;
@@ -7,7 +7,7 @@ import com.app.delicare.entitys.category.Title;
 import com.app.delicare.entitys.address.District;
 import com.app.delicare.entitys.address.Province;
 import com.app.delicare.entitys.address.Ward;
-import com.app.delicare.entitys.base.BaseEntity;
+import com.app.delicare.entitys.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 

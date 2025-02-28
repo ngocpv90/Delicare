@@ -2,7 +2,7 @@ package com.app.delicare.service.category;
 
 import com.app.delicare.dtos.category.ShippingDTO;
 import com.app.delicare.entitys.category.Shipping;
-import com.app.delicare.entitys.user.User;
+import com.app.delicare.entitys.users.User;
 import com.app.delicare.mappers.category.ShippingMapper;
 import com.app.delicare.repositories.category.ShippingRepository;
 import com.app.delicare.repositories.user.UserRepository;

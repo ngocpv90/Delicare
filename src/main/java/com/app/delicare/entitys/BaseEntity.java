@@ -1,6 +1,6 @@
-package com.app.delicare.entitys.base;
+package com.app.delicare.entitys;
 
-import com.app.delicare.entitys.user.User;
+import com.app.delicare.entitys.users.User;
 import jakarta.persistence.*;
 import lombok.*;
 

@@ -2,12 +2,14 @@ package com.app.delicare.dtos.base;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.MappedSuperclass;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
+@Builder
 @Getter
 @Setter
 @MappedSuperclass
+@NoArgsConstructor
+@AllArgsConstructor
 public class BaseDTO {
     @JsonProperty("deleted")
     private int deleted;
@@ -17,4 +19,8 @@ public class BaseDTO {
     private int status;
     private Long createdById;
     private Long modifiedById;
+
+//    public BaseDTO() {
+//
+//    }
 }

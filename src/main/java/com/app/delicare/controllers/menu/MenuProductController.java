@@ -59,7 +59,7 @@ public class MenuProductController {
     }
 
     @GetMapping("/listAll")
-    public ResponseEntity<?> getListAllMenu(@RequestBody MenuProductDTO menuProductDTO){
+    public ResponseEntity<?> getListAllMenu(){
         try {
             if(!commonService.hasAccessPermission("", EFunction.MENU_PRODUCT.getValue(), EAction.READ.getValue())){
                 return ResponseEntity.badRequest().body(SystemResponse.builder()

@@ -1,6 +1,6 @@
 package com.app.delicare.repositories.user;
 
-import com.app.delicare.entitys.user.UserContact;
+import com.app.delicare.entitys.users.UserContact;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 

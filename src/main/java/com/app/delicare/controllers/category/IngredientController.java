@@ -1,14 +1,10 @@
-package com.app.delicare.controllers;
+package com.app.delicare.controllers.category;
 
 import com.app.delicare.common.enums.EAction;
 import com.app.delicare.common.enums.EFunction;
 import com.app.delicare.component.MessageUtils;
 import com.app.delicare.dtos.ingredient.IngredientDTO;
-import com.app.delicare.dtos.order.OrderDTO;
-import com.app.delicare.dtos.order.OrderDetailDTO;
 import com.app.delicare.responses.IngredientResponse;
-import com.app.delicare.responses.base.SystemResponse;
-import com.app.delicare.responses.order.OrderDetailResponse;
 import com.app.delicare.responses.user.UserResponse;
 import com.app.delicare.service.IngredientService;
 import com.app.delicare.service.common.CommonService;
@@ -28,7 +24,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("${api.prefix}/ingredients")
+@RequestMapping("${api.prefix}/ingredient")
 public class IngredientController {
     private final CommonService commonService;
     private final MessageUtils messageUtils;
@@ -41,20 +37,23 @@ public class IngredientController {
     ){
         try {
             if(!commonService.hasAccessPermission("", EFunction.INGREDIENT.getValue(), EAction.READ.getValue())){
-                return ResponseEntity.badRequest().body(SystemResponse.builder()
-                        .message(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION))
-                        .build());
+//                return ResponseEntity.badRequest().body(SystemResponse.builder()
+//                        .message(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION))
+//                        .build());
+                return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION));
             }
 
             PageRequest pageRequest = PageRequest.of(
                     page, limit,
                     Sort.by("createdAt").descending());
             Page<IngredientResponse> ingredientResponses = ingredientService.getListFoodIngredien(pageRequest);
-            return ResponseEntity.ok(SystemResponse.builder()
-                    .data(ingredientResponses.getContent())
-                    .totalRow(ingredientResponses.getTotalElements())
-                    .totalPages(ingredientResponses.getTotalPages())
-                    .build());
+//            return ResponseEntity.ok(SystemResponse.builder()
+//                    .data(ingredientResponses.getContent())
+//                    .totalRow(ingredientResponses.getTotalElements())
+//                    .totalPages(ingredientResponses.getTotalPages())
+//                    .build());
+            return ResponseEntity.ok(ingredientResponses);
+
         }catch (Exception e){
             return ResponseEntity.badRequest()
                     .body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_DATA_NOT_FOUND));
@@ -65,17 +64,19 @@ public class IngredientController {
     public ResponseEntity<?> getListAllIngredient(@RequestBody IngredientDTO ingredientDTO){
         try {
             if(!commonService.hasAccessPermission("", EFunction.INGREDIENT.getValue(), EAction.READ.getValue())){
-                return ResponseEntity.badRequest().body(SystemResponse.builder()
-                        .message(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION))
-                        .build());
+//                return ResponseEntity.badRequest().body(SystemResponse.builder()
+//                        .message(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION))
+//                        .build());
+                return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION));
             }
 
             List<IngredientResponse> ingredientResponses = ingredientService.getAllFoodIngredien();
-            return ResponseEntity.ok(SystemResponse.builder()
-                    .data(ingredientResponses)
-                    .totalRow(ingredientResponses.stream().count())
-                    .totalPages(0)
-                    .build());
+//            return ResponseEntity.ok(SystemResponse.builder()
+//                    .data(ingredientResponses)
+//                    .totalRow(ingredientResponses.stream().count())
+//                    .totalPages(0)
+//                    .build());
+            return ResponseEntity.ok(ingredientResponses);
         }catch (Exception e){
             return ResponseEntity.badRequest()
                     .body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_DATA_NOT_FOUND));
@@ -86,9 +87,10 @@ public class IngredientController {
     public ResponseEntity<?> getIngredientById(@PathVariable Long id){
         try {
             if(!commonService.hasAccessPermission("", EFunction.INGREDIENT.getValue(), EAction.READ.getValue())){
-                return ResponseEntity.badRequest().body(SystemResponse.builder()
-                        .message(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION))
-                        .build());
+//                return ResponseEntity.badRequest().body(SystemResponse.builder()
+//                        .message(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION))
+//                        .build());
+                return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION));
             }
             return ResponseEntity.ok(ingredientService.getFoodIngredienById(id));
         } catch (Exception e){
@@ -120,11 +122,11 @@ public class IngredientController {
             }
             ingredientDTO.setCreatedById(userAuthentication.getId());
             IngredientResponse ingredientResponse = ingredientService.createGFoodIngredien(ingredientDTO);
-            return ResponseEntity.ok(SystemResponse.builder()
-                    .message(messageUtils.getLocalizationMessage(MessageString.DEPARTMENT_CREATE_SUCCESSFULLY))
-                    .id(ingredientResponse.getId())
-                    .build()
-            );
+//            return ResponseEntity.ok(SystemResponse.builder()
+//                    .message(messageUtils.getLocalizationMessage(MessageString.DEPARTMENT_CREATE_SUCCESSFULLY))
+//                    .id(ingredientResponse.getId())
+//                    .build());
+            return ResponseEntity.ok(messageUtils.getLocalizationMessage(MessageString.DEPARTMENT_CREATE_SUCCESSFULLY));
         } catch(Exception e){
             return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.DEPARTMENT_CREATE_FAILED));
         }
@@ -134,9 +136,10 @@ public class IngredientController {
     public ResponseEntity<?> updateIngredient(@PathVariable Long id, IngredientDTO ingredientDTO){
         try {
             if(commonService.hasAccessPermission("", EFunction.INGREDIENT.getValue(), EAction.UPDATE.getValue())){
-                return ResponseEntity.badRequest().body(SystemResponse.builder()
-                        .message(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION))
-                        .build());
+//                return ResponseEntity.badRequest().body(SystemResponse.builder()
+//                        .message(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION))
+//                        .build());
+                return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION));
             }
 
             UserResponse userAuthentication = commonService.getUserLogin(WebUtils.getAuthentication());

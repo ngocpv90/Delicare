@@ -1,6 +1,6 @@
 package com.app.delicare.specification.user;
 
-import com.app.delicare.entitys.user.UserAddress;
+import com.app.delicare.entitys.users.UserAddress;
 import com.app.delicare.specification.BaseSpecification;
 import org.springframework.data.jpa.domain.Specification;
 

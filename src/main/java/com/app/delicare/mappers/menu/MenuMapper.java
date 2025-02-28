@@ -21,7 +21,11 @@ public class MenuMapper extends BaseMapper {
                 .menuName(menuDTO.getMenuType())
                 .menuType(menuDTO.getMenuType())
                 .iconPath(menuDTO.getIconPath())
-                .menuSort(menuDTO.getMenuSort())
+                .sort(menuDTO.getSort())
+                .price(menuDTO.getPrice())
+                .shortDescription(menuDTO.getShortDescription())
+                .score(menuDTO.getScore())
+                .ratingStar(menuDTO.getRatingStar())
                 .build();
         menu.setStatus(menuDTO.getStatus());
         return menu;
@@ -33,7 +37,11 @@ public class MenuMapper extends BaseMapper {
                 .menuCode(menu.getMenuCode())
                 .menuName(menu.getMenuName())
                 .menuType(menu.getMenuType())
-                .menuSort(menu.getMenuSort())
+                .score(menu.getScore())
+                .price(menu.getPrice())
+                .shortDescription(menu.getShortDescription())
+                .score(menu.getScore())
+                .ratingStar(menu.getRatingStar())
                 .build();
 
         Optional.ofNullable(menu)

@@ -6,7 +6,7 @@ import com.app.delicare.component.CommonUtils;
 import com.app.delicare.dtos.menu.MenuDayDTO;
 import com.app.delicare.entitys.menu.Menu;
 import com.app.delicare.entitys.menu.MenuDay;
-import com.app.delicare.entitys.user.User;
+import com.app.delicare.entitys.users.User;
 import com.app.delicare.mappers.menu.MenuDayMapper;
 import com.app.delicare.repositories.menu.MenuDayRepository;
 import com.app.delicare.repositories.menu.MenuRepository;

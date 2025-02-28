@@ -2,7 +2,7 @@ package com.app.delicare.service.order;
 
 import com.app.delicare.dtos.order.OrderDetailDTO;
 import com.app.delicare.entitys.order.OrderDetail;
-import com.app.delicare.entitys.user.User;
+import com.app.delicare.entitys.users.User;
 import com.app.delicare.mappers.order.OrderDetailMapper;
 import com.app.delicare.repositories.order.OrderDetailRepository;
 import com.app.delicare.repositories.user.UserRepository;

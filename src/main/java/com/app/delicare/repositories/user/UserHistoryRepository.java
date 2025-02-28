@@ -1,7 +1,7 @@
 package com.app.delicare.repositories.user;
 
-import com.app.delicare.entitys.user.UserContact;
-import com.app.delicare.entitys.user.UserHistory;
+import com.app.delicare.entitys.users.UserContact;
+import com.app.delicare.entitys.users.UserHistory;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

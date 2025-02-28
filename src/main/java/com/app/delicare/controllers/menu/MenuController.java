@@ -2,8 +2,8 @@ package com.app.delicare.controllers.menu;
 
 import com.app.delicare.common.enums.EAction;
 import com.app.delicare.common.enums.EFunction;
+import com.app.delicare.component.FileUtils;
 import com.app.delicare.component.MessageUtils;
-import com.app.delicare.dtos.ingredient.IngredientDTO;
 import com.app.delicare.dtos.menu.MenuDTO;
 import com.app.delicare.responses.base.SystemResponse;
 import com.app.delicare.responses.menu.MenuResponse;
@@ -17,16 +17,20 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("${api.prefix}/menus")
+@RequestMapping("${api.prefix}/menu")
 public class MenuController {
     private final CommonService commonService;
     private final MessageUtils messageUtils;
@@ -60,7 +64,7 @@ public class MenuController {
     }
 
     @GetMapping("/listAll")
-    public ResponseEntity<?> getListAllMenu(@RequestBody IngredientDTO ingredientDTO){
+    public ResponseEntity<?> getListAllMenu(){
         try {
             if(!commonService.hasAccessPermission("", EFunction.MENU.getValue(), EAction.READ.getValue())){
                 return ResponseEntity.badRequest().body(SystemResponse.builder()
@@ -121,6 +125,43 @@ public class MenuController {
             return ResponseEntity.ok(SystemResponse.builder()
                     .message(messageUtils.getLocalizationMessage(MessageString.DEPARTMENT_CREATE_SUCCESSFULLY))
                     .id(menuResponse.getId())
+                    .build()
+            );
+        } catch(Exception e){
+            return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.DEPARTMENT_CREATE_FAILED));
+        }
+    }
+
+    @PostMapping(value = "/uploadFile{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<?> uploadFile(
+            @PathVariable Long menuId,
+            @ModelAttribute("files") List<MultipartFile> files
+    ){
+        try{
+
+            files = files == null ? new ArrayList<MultipartFile>() : files;
+            for(MultipartFile file : files){
+                if(file.getSize() == 0){
+                    continue;
+                }
+
+                if(file != null){
+                    if(file.getSize() > 10 * 1024 * 1024){
+                        return ResponseEntity.status(HttpStatus.PAYMENT_REQUIRED)
+                                .body("file is too large Maximum size is 10MD");
+                    }
+
+                    String contentType = file.getContentType();
+                    if(contentType == null || contentType.startsWith("image/")){
+                        return ResponseEntity.status(HttpStatus.UNSUPPORTED_MEDIA_TYPE)
+                                .body("file must be an image");
+                    }
+                    String filename = FileUtils.storeFile(file);
+                }
+            }
+
+            return ResponseEntity.ok(SystemResponse.builder()
+                    .message(messageUtils.getLocalizationMessage(MessageString.DEPARTMENT_CREATE_SUCCESSFULLY))
                     .build()
             );
         } catch(Exception e){

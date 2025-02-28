@@ -2,7 +2,7 @@ package com.app.delicare.service.product;
 
 import com.app.delicare.dtos.product.ProductDTO;
 import com.app.delicare.entitys.product.Product;
-import com.app.delicare.entitys.user.User;
+import com.app.delicare.entitys.users.User;
 import com.app.delicare.mappers.product.ProductMapper;
 import com.app.delicare.repositories.product.ProductRepository;
 import com.app.delicare.repositories.user.UserRepository;

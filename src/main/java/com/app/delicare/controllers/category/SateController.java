@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("${api.prefix}/stages")
+@RequestMapping("${api.prefix}/stage")
 public class SateController {
     private final CommonService commonService;
     private final MessageUtils messageUtils;

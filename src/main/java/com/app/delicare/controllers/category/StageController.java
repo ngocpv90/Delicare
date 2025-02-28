@@ -25,7 +25,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("${api.prefix}/stage")
+@RequestMapping("${api.prefix}/stages")
 public class StageController {
     private final StageService stageService;
     private final MessageUtils messageUtils;
