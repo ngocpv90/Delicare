@@ -7,6 +7,7 @@ import com.app.delicare.dtos.login.LoginDTO;
 import com.app.delicare.dtos.login.TokenVerifyDTO;
 import com.app.delicare.dtos.user.UserDTO;
 import com.app.delicare.responses.LoginResponse;
+import com.app.delicare.responses.base.Response;
 import com.app.delicare.responses.user.UserResponse;
 import com.app.delicare.responses.base.SystemResponse;
 import com.app.delicare.responses.base.SystemResponses;

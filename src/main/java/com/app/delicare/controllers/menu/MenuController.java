@@ -132,41 +132,46 @@ public class MenuController {
         }
     }
 
-    @PostMapping(value = "/uploadFile{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/uploads{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> uploadFile(
-            @PathVariable Long menuId,
+            @PathVariable("id") Long menuId,
             @ModelAttribute("files") List<MultipartFile> files
     ){
-        try{
+        if(commonService.hasAccessPermission("", EFunction.MENU.getValue(), EAction.UPLOAD.getValue())){
+            return ResponseEntity.badRequest().body(SystemResponse.builder()
+                    .message(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION))
+                    .build());
+        }
 
-            files = files == null ? new ArrayList<MultipartFile>() : files;
-            for(MultipartFile file : files){
-                if(file.getSize() == 0){
-                    continue;
-                }
 
-                if(file != null){
-                    if(file.getSize() > 10 * 1024 * 1024){
-                        return ResponseEntity.status(HttpStatus.PAYMENT_REQUIRED)
-                                .body("file is too large Maximum size is 10MD");
-                    }
+        SystemResponse systemResponse = FileUtils.uploadImage(files);
+        if(systemResponse == null || systemResponse.getStatus() == 0){
+            return ResponseEntity.badRequest().body(SystemResponse.builder()
+                    .message(messageUtils.getLocalizationMessage(MessageString.FILE_UPLOAD_FAILED))
+                    .build());
+        }
 
-                    String contentType = file.getContentType();
-                    if(contentType == null || contentType.startsWith("image/")){
-                        return ResponseEntity.status(HttpStatus.UNSUPPORTED_MEDIA_TYPE)
-                                .body("file must be an image");
-                    }
-                    String filename = FileUtils.storeFile(file);
-                }
+        if(systemResponse.getStatus() == HttpStatus.OK.value()){
+            List<String> fileUploads = (List<String>) systemResponse.getData();
+            MenuDTO menuDTO = MenuDTO.builder()
+                    .id(menuId)
+                    .build();
+
+            for(String filename : fileUploads){
+                menuDTO.setIconPath(filename);
+                menuService.updateMenu(menuId, menuDTO);
             }
 
             return ResponseEntity.ok(SystemResponse.builder()
-                    .message(messageUtils.getLocalizationMessage(MessageString.DEPARTMENT_CREATE_SUCCESSFULLY))
-                    .build()
-            );
-        } catch(Exception e){
-            return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.DEPARTMENT_CREATE_FAILED));
+                    .message(messageUtils.getLocalizationMessage(MessageString.FILE_UPLOAD_SUCCESSFULLY))
+                    .status(HttpStatus.OK.value())
+                    .build());
+
         }
+
+        return ResponseEntity.ok(SystemResponse.builder()
+                .message(messageUtils.getLocalizationMessage(systemResponse.getMessage()))
+                .build());
     }
 
     @PutMapping("/update/{id}")

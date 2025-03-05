@@ -10,6 +10,12 @@ public class MessageString {
     public static final String SYSTEM_DELETE_SUCCESSFULLY = "system.delete.successfully";
     public static final String SYSTEM__DELETE_FAILED = "system.delete.failed";
     public static final String SYSTEM_DATA_EXISTS = "system.data.exists";
+    //FILE
+    public static final String FILE_TO_LARGE = "file.to.large";
+    public static final String FILE_VALIDATE_TYPE = "file.image.validate.type";
+    public static final String FILE_UPLOAD_SUCCESSFULLY = "file.upload.successfully";
+    public static final String FILE_UPLOAD_FAILED = "file.upload.failed";
+    public static final String FILE_NOT_FOUND = "file.not.found";
 
     public static final String SYSTEM_PERMISSION = "system.permission";
     //USER

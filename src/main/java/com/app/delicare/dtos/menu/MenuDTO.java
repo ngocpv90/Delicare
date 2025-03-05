@@ -3,12 +3,14 @@ import com.app.delicare.dtos.base.BaseDTO;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 //@Builder
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@SuperBuilder
 public class MenuDTO extends BaseDTO{
     @NotEmpty(message = "code is not null")
     @JsonProperty("menuCode")

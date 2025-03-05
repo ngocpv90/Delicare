@@ -9,7 +9,8 @@ public enum EAction {
     APPROVE("APPROVE"),
     ASSIGN("ASSIGN"),
     IMPORT("IMPORT"),
-    REJECT("REJECT")
+    REJECT("REJECT"),
+    UPLOAD("UPLOAD")
     ;
 
     private final String value;
