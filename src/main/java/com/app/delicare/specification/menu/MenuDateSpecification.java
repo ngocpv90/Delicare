@@ -1,25 +1,25 @@
 package com.app.delicare.specification.menu;
 
-import com.app.delicare.entitys.menu.MenuDay;
+import com.app.delicare.entitys.menu.MenuDate;
 import com.app.delicare.specification.BaseSpecification;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.util.Date;
 
-public class MenuDaySpecification extends BaseSpecification<MenuDay> {
-    public static Specification<MenuDay> hasMenuId(Long menuId, String condition) {
+public class MenuDateSpecification extends BaseSpecification<MenuDate> {
+    public static Specification<MenuDate> hasMenuId(Long menuId, String condition) {
         return hasColumnCondition("menu","id", menuId, condition);
     }
-    public static Specification<MenuDay> hasMenuDate(Date menuDate, String condition) {
+    public static Specification<MenuDate> hasMenuDate(Date menuDate, String condition) {
         return hasColumnCondition("menuDate", menuDate, condition);
     }
-    public static Specification<MenuDay> hasMenuWeek(Long menuWeek, String condition) {
+    public static Specification<MenuDate> hasMenuWeek(Long menuWeek, String condition) {
         return hasColumnCondition("menuWeek", menuWeek, condition);
     }
-    public static Specification<MenuDay> hasMenuMonth(Long menuMonth, String condition) {
+    public static Specification<MenuDate> hasMenuMonth(Long menuMonth, String condition) {
         return hasColumnCondition("menuMonth", menuMonth, condition);
     }
-    public static Specification<MenuDay> hasMenuYear(Long menuYear, String condition) {
+    public static Specification<MenuDate> hasMenuYear(Long menuYear, String condition) {
         return hasColumnCondition("menuYear", menuYear, condition);
     }
 //    public static Specification<MenuDay> isNotDeleted() {

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+import org.springframework.web.multipart.MultipartFile;
 
 //@Builder
 @Getter
@@ -32,4 +33,5 @@ public class MenuDTO extends BaseDTO{
     private Long ratingStar;
     @JsonProperty("price")
     private Long price;
+    private MultipartFile file;
 }

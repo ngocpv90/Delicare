@@ -12,7 +12,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class MenuDay extends BaseEntity {
+public class MenuDate extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "MENU_ID")
     private Menu menu;

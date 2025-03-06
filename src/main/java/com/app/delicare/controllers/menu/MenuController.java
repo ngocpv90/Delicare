@@ -98,9 +98,19 @@ public class MenuController {
         }
     }
 
-    @PostMapping("/create")
+    @GetMapping("/viewDetail/{id}")
+    public ResponseEntity<?> getMenuDetail(@PathVariable Long id){
+        try {
+            return ResponseEntity.ok(menuService.getMenuyId(id));
+        } catch (Exception e){
+            return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_DATA_NOT_FOUND));
+        }
+    }
+
+    //@PostMapping("/create")
+    @PostMapping(value = "", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> createMenu(
-            @Valid @RequestBody MenuDTO menuDTO,
+            @Valid @ModelAttribute MenuDTO menuDTO,
             BindingResult result
     ){
         try{
@@ -121,6 +131,20 @@ public class MenuController {
                 return ResponseEntity.badRequest().body(messageUtils.getLocalizationMessage(MessageString.SYSTEM_PERMISSION));
             }
             menuDTO.setCreatedById(userAuthentication.getId());
+            if(menuDTO.getFile() != null && menuDTO.getFile().getSize() != 0){
+                SystemResponse systemResponse = FileUtils.uploadImage(menuDTO.getFile());
+                if(systemResponse == null || systemResponse.getStatus() != HttpStatus.OK.value()){
+                    return ResponseEntity.status(systemResponse.getStatus())
+                            .body(messageUtils.getLocalizationMessage(systemResponse.getMessage()));
+                }
+                List<String> fileUploads = (List<String>) systemResponse.getData();
+
+                for(String filename : fileUploads){
+                    menuDTO.setIconPath(filename);
+                }
+            }
+
+
             MenuResponse menuResponse = menuService.createMenu(menuDTO);
             return ResponseEntity.ok(SystemResponse.builder()
                     .message(messageUtils.getLocalizationMessage(MessageString.DEPARTMENT_CREATE_SUCCESSFULLY))

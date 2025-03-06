@@ -34,16 +34,20 @@ public class WebSecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(requests ->{
-                    requests
-                            .requestMatchers(
-                                    String.format("%s/users/register", prefix),
-                                    String.format("%s/users/login", prefix)
-                            )
-                            .permitAll()
-                            .requestMatchers(PUT,
-                                    String.format("%s/region/**", prefix)).hasRole(Role.roleADMIN)
-                            .anyRequest()
-                            .authenticated();
+//                    requests
+//                            .requestMatchers(
+//                                    String.format("%s/users/register", prefix),
+//                                    String.format("%s/users/login", prefix),
+//                                    String.format("%s/menuDate/filterData", prefix),
+//                                    String.format("%s/menu/viewDetail", prefix)
+//                            )
+//                            .permitAll()
+//                            .requestMatchers(PUT,
+//                                    String.format("%s/region/**", prefix)).hasRole(Role.roleADMIN)
+//                            .anyRequest()
+//                            .authenticated();
+                    requests.requestMatchers("**")
+                            .permitAll();
 
                 })
         ;

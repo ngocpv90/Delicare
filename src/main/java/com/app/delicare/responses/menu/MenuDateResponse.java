@@ -12,7 +12,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public class MenuDayResponse extends BaseResponse {
+public class MenuDateResponse extends BaseResponse {
     private Long id;
     private MenuResponse menuResponse;
     private Date menuDate;

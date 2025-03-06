@@ -10,7 +10,7 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class MenuDayDTO extends BaseDTO {
+public class MenuDateDTO extends BaseDTO {
     @JsonProperty("menuId")
     private Long menuId;
     @JsonProperty("menuDate")

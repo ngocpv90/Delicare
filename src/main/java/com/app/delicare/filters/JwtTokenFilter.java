@@ -68,7 +68,9 @@ public class JwtTokenFilter extends  OncePerRequestFilter{
                 //them cac function bypass
                 Pair.of(String.format("%s/users/logout", prefix), "POST"),
                 Pair.of(String.format("%s/users/login", prefix),"POST"),
-                Pair.of(String.format("%s/users/register", prefix),"POST")
+                Pair.of(String.format("%s/users/register", prefix),"POST"),
+                Pair.of(String.format("%s/menuDate/filterData", prefix),"POST"),
+                Pair.of(String.format("%s/menu/viewDetail", prefix),"GET")
         );
 
         for (Pair<String, String> bypassToken: bypassTokens ){
